@@ -1,28 +1,31 @@
 ## ProjectManager
 
 Izborni projekt iz kolegija **Razvoj Web Aplikacija**.
-Projekt je baziran na *kanban* metodi.
+Projekt je baziran na _kanban_ metodi.
 
 ### Projekt sadrzava:
- * Web sucelje (*Angular*)
- * Bazu podataka (*MySQL*)
- * Backend **API** (*Java*)
+
+- Web sucelje (_Angular_)
+- Bazu podataka (_PostgreSQL_)
+- Backend **API** (_Java_)
 
 ### Glavne funkcijonalnosti:
-* Pregled tablice (kanban ploce)
-* Dodavanje *task*-ova
-* Dodavanje *tablica*
-* Premjestanje *task*-ova unutar tablice
-* Kategoriziranje *task*-ova
-* Podjela ljudi na specificni *task*
-* Dodavanje github linka na task za specificni *Pull Request*
-* Timer za pojedini *task*
-* Opcija za *deadline* na specificni task
-* Dodavanje prioriteta *task*-ovima
 
+- Pregled tablice (kanban ploce)
+- Dodavanje _task_-ova
+- Dodavanje _tablica_
+- Premjestanje _task_-ova unutar tablice
+- Kategoriziranje _task_-ova
+- Podjela ljudi na specificni _task_
+- Dodavanje github linka na task za specificni _Pull Request_
+- Timer za pojedini _task_
+- Opcija za _deadline_ na specificni task
+- Dodavanje prioriteta _task_-ovima
 
 ### TODO
+
 Za napraviti prije pocetka :
-* Napraviti dizajn baze (*dijagram*)
-* Napraviti dizajn web sucelja
-* Tech dizajn API-a
+
+- Napraviti dizajn baze (_dijagram_)
+- Napraviti dizajn web sucelja
+- Tech dizajn API-a
