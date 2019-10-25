@@ -8,11 +8,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  login(email: string, password: string) {
+  public login(email: string, password: string) {
     const loginHeaders: HttpHeaders = new HttpHeaders();
     loginHeaders.append('Content-Type', 'application/json');
     loginHeaders.append('Authorization', 'Basic ' + btoa(email + ':' + password));
 
-    this.http.post(serverConfig.apiAddress + '/login', {}, { headers: loginHeaders });
+    this.http
+      .post(serverConfig.apiAddress + '/login', {}, { headers: loginHeaders })
+      .toPromise()
+      .then(response => {
+        console.log(response);
+      });
   }
 }
