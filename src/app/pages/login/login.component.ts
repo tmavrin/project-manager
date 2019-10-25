@@ -1,6 +1,7 @@
-import { AuthService } from './../../services/user/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { AuthService } from './../../services/user/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -13,11 +14,19 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private authService: AuthService) {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
-      pass: ['', Validators.compose([Validators.required, Validators.minLength(6)])]
+      pass: ['', Validators.compose([Validators.required, Validators.minLength(1)])]
     });
   }
 
   ngOnInit() {}
 
-  onLoginButton() {}
+  onLoginButton() {
+    if (this.loginForm.valid) {
+      const email = this.loginForm.getRawValue().email;
+      const password = this.loginForm.getRawValue().pass;
+      this.authService.login(email, password);
+    } else {
+      console.log('invalid login');
+    }
+  }
 }
