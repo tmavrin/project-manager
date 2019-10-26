@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpResponse } from '@angular/common/http';
 
 import { serverConfig } from './../../config';
 
@@ -7,26 +7,36 @@ import { serverConfig } from './../../config';
   providedIn: 'root'
 })
 export class AuthService {
+  private sessionId: string;
+
   constructor(private http: HttpClient) {}
 
-  public login(email: string, password: string) {
+  public getSessionId(): string {
+    return this.sessionId;
+  }
+
+  public login(email: string, password: string): Promise<any> {
     const loginHeaders = {
       'Content-Type': 'application/json',
       Authorization: 'Basic ' + btoa(email + ':' + password)
     };
 
-    console.log(loginHeaders);
-
-    this.http
-      .post(serverConfig.apiAddress + '/login', {}, { headers: loginHeaders })
-      .toPromise()
-      .then(
-        data => {
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        }
-      );
+    return new Promise((resolve, reject) => {
+      this.http
+        .post(serverConfig.apiAddress + '/login', {}, { headers: loginHeaders })
+        .toPromise()
+        .then(
+          (data: any) => {
+            if (data.status === 'failure') {
+              reject('Invalid login info. No user with credentials found');
+            } else {
+              resolve(data.response);
+            }
+          },
+          (error: HttpErrorResponse) => {
+            reject(error);
+          }
+        );
+    });
   }
 }

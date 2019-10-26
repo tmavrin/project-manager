@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 import { AuthService } from './../../services/user/auth.service';
 
@@ -10,8 +11,9 @@ import { AuthService } from './../../services/user/auth.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  invalidLogin: boolean;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       pass: ['', Validators.compose([Validators.required, Validators.minLength(1)])]
@@ -24,7 +26,15 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       const email = this.loginForm.getRawValue().email;
       const password = this.loginForm.getRawValue().pass;
-      this.authService.login(email, password);
+      this.authService.login(email, password).then(
+        successs => {
+          this.invalidLogin = false;
+          this.router.navigateByUrl('/home');
+        },
+        rejected => {
+          this.invalidLogin = true;
+        }
+      );
     } else {
       console.log('invalid login');
     }
