@@ -10,23 +10,19 @@ import {
 } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SessionInterceptorService implements HttpInterceptor {
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return next.handle(request).pipe(
-      map(event => {
-        if (event instanceof HttpResponse) {
-          // console.log(event.body.sessionId);
-          // document.cookie = 'JSESSIONID=' + event.body.sessionId;
-        }
-        return event;
-      })
-    );
+    const authHeaders = this.authService.getAuthHeaders();
+    request = request.clone({ headers: new HttpHeaders(authHeaders) });
+    console.log(request.headers);
+    return next.handle(request);
   }
 }

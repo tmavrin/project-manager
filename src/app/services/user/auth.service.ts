@@ -7,23 +7,23 @@ import { serverConfig } from './../../config';
   providedIn: 'root'
 })
 export class AuthService {
-  private sessionId: string;
+  private authHeaders;
 
   constructor(private http: HttpClient) {}
 
-  public getSessionId(): string {
-    return this.sessionId;
+  public getAuthHeaders() {
+    return this.authHeaders;
   }
 
   public login(email: string, password: string): Promise<any> {
-    const loginHeaders = {
+    this.authHeaders = {
       'Content-Type': 'application/json',
       Authorization: 'Basic ' + btoa(email + ':' + password)
     };
 
     return new Promise((resolve, reject) => {
       this.http
-        .post(serverConfig.apiAddress + '/login', {}, { headers: loginHeaders })
+        .post(serverConfig.apiAddress + '/login', {})
         .toPromise()
         .then(
           (data: any) => {
