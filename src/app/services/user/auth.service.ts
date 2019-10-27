@@ -9,6 +9,8 @@ import { serverConfig } from './../../config';
 export class AuthService {
   private authHeaders;
 
+  public isAuthenticated;
+
   constructor(private http: HttpClient) {}
 
   public getAuthHeaders() {
@@ -28,12 +30,16 @@ export class AuthService {
         .then(
           (data: any) => {
             if (data.status === 'failure') {
+              this.isAuthenticated = false;
               reject('Invalid login info. No user with credentials found');
             } else {
+              this.isAuthenticated = true;
               resolve(data.response);
             }
           },
           (error: HttpErrorResponse) => {
+            // Unauthorized or other errors
+            this.isAuthenticated = false;
             reject(error);
           }
         );
