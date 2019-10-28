@@ -5,10 +5,9 @@
 }
 
 .home-footer {
-  position: absolute;
-  top: 0;
   width: 100%;
-  height: 70px;
+  height: 7%;
+  max-height: 70px;
   display: flex;
   justify-content: space-between;
   background: #C4C4C4;
@@ -38,4 +37,11 @@
   .project-settings {
     margin-right: 1%;
   }
+}
+
+.home-board {
+  background: white;
+  width: 98%;
+  height: 90%;
+  margin: 1% auto 0 auto;
 }
