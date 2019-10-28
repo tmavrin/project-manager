@@ -11,9 +11,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SessionInterceptorService } from './services/user/session-interceptor.service';
 import { ColumnComponent } from './components/column/column.component';
+import { TicketComponent } from './components/ticket/ticket.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, ColumnComponent],
+  declarations: [AppComponent, LoginComponent, HomeComponent, ColumnComponent, TicketComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
