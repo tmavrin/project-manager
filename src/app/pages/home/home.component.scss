@@ -41,7 +41,14 @@
 
 .home-board {
   background: white;
-  width: 98%;
-  height: 90%;
-  margin: 1% auto 0 auto;
+  width: 96%;
+  height: 86%;
+  margin: 1.5% auto 0 auto;
+  display: flex;
+  padding: 7px;
+
+  app-column {
+    padding: 7px;
+    flex: 1;
+  }
 }
