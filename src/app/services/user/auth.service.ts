@@ -46,3 +46,10 @@ export class AuthService {
     });
   }
 }
+
+export interface User {
+  uid: string;
+  name: string;
+  email: string;
+  boardIds?: string[];
+}
