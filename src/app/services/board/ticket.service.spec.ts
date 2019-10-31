@@ -28,7 +28,7 @@ fdescribe('TicketService', () => {
   });
 
   it('should return array of tickets', () => {
-    let ticket1: Ticket = {
+    const ticket1: Ticket = {
       title: 'test title',
       subtitle: 'test subtitle',
       dateCreated: new Date(),
@@ -38,7 +38,7 @@ fdescribe('TicketService', () => {
         email: 'email'
       }
     };
-    let ticket2: Ticket = {
+    const ticket2: Ticket = {
       title: 'test title2',
       subtitle: 'test subtitle2',
       dateCreated: new Date(),
@@ -48,7 +48,7 @@ fdescribe('TicketService', () => {
         email: 'email'
       }
     };
-    let ticket3: Ticket = {
+    const ticket3: Ticket = {
       title: 'test title3',
       subtitle: 'test subtitle3',
       dateCreated: new Date(),
@@ -59,7 +59,7 @@ fdescribe('TicketService', () => {
       }
     };
 
-    let mockTickets = { ticket1, ticket2, ticket3 };
+    const mockTickets = { ticket1, ticket2, ticket3 };
 
     service.getColumnTickets('test_id').then(tickets => {
       console.log(tickets);
