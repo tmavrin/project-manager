@@ -11,10 +11,6 @@ import { TicketService, Ticket } from './../../services/board/ticket.service';
 export class ColumnComponent implements OnInit {
   public tickets;
 
-  todo = ['Get to work', 'Pick up groceries', 'Go home', 'Fall asleep'];
-
-  done = ['Get up', 'Brush teeth', 'Take a shower', 'Check e-mail', 'Walk dog'];
-
   constructor(private ticketService: TicketService) {}
 
   ngOnInit() {
@@ -22,7 +18,6 @@ export class ColumnComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<Ticket[]>) {
-    console.log(this.tickets);
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
     } else {
