@@ -1,3 +1,4 @@
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -7,11 +8,11 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { ColumnComponent } from './components/column/column.component';
+import { TicketComponent } from './components/ticket/ticket.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SessionInterceptorService } from './services/user/session-interceptor.service';
-import { ColumnComponent } from './components/column/column.component';
-import { TicketComponent } from './components/ticket/ticket.component';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent, ColumnComponent, TicketComponent],
@@ -21,7 +22,8 @@ import { TicketComponent } from './components/ticket/ticket.component';
     BrowserAnimationsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    DragDropModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: SessionInterceptorService, multi: true }],
   bootstrap: [AppComponent]
