@@ -5,7 +5,7 @@ import { serverConfig } from './../../config';
 
 import { TicketService, Ticket } from './ticket.service';
 
-fdescribe('TicketService', () => {
+describe('TicketService', () => {
   let httpTestingController: HttpTestingController;
   let service: TicketService;
 

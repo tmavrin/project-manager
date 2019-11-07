@@ -20,11 +20,7 @@
   </div>
 
   <div class="home-board" cdkDropListGroup>
-    <app-column></app-column>
-    <app-column></app-column>
-    <app-column></app-column>
-    <app-column></app-column>
-    <app-column></app-column>
+    <app-column *ngFor="let column of board?.columns" [column]="column"> </app-column>
   </div>
 
 </div>

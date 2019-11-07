@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
+import { Column } from './../../services/board/board.service';
 import { TicketService, Ticket } from './../../services/board/ticket.service';
 
 @Component({
@@ -9,13 +10,11 @@ import { TicketService, Ticket } from './../../services/board/ticket.service';
   styleUrls: ['./column.component.scss']
 })
 export class ColumnComponent implements OnInit {
-  public tickets;
+  @Input('column') column: Column;
 
   constructor(private ticketService: TicketService) {}
 
-  ngOnInit() {
-    this.tickets = this.ticketService.getMockColumnTickets();
-  }
+  ngOnInit() {}
 
   drop(event: CdkDragDrop<Ticket[]>) {
     if (event.previousContainer === event.container) {
@@ -24,4 +23,6 @@ export class ColumnComponent implements OnInit {
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     }
   }
+
+  addTicket() {}
 }

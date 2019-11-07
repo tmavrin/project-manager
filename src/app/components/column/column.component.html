@@ -1,9 +1,9 @@
-<div class="column-comp" cdkDropList [cdkDropListData]="tickets" (cdkDropListDropped)="drop($event)">
+<div class="column-comp" cdkDropList [cdkDropListData]="column?.tickets" (cdkDropListDropped)="drop($event)">
   <div class="column-title">
     <p>Column Title</p>
-    <img src="assets/column/add.svg">
+    <img (click)="addTicket()" src="assets/column/add.svg">
   </div>
   <div class="column-tickets">
-    <app-ticket cdkDrag *ngFor="let ticket of tickets" [ticket]="ticket"></app-ticket>
+    <app-ticket cdkDrag *ngFor="let ticket of column?.tickets" [ticket]="ticket"></app-ticket>
   </div>
 </div>
