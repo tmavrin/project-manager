@@ -13,9 +13,18 @@ import { TicketComponent } from './components/ticket/ticket.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SessionInterceptorService } from './services/user/session-interceptor.service';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NewTicketDialogComponent } from './components/new-ticket-dialog/new-ticket-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, HomeComponent, ColumnComponent, TicketComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    HomeComponent,
+    ColumnComponent,
+    TicketComponent,
+    NewTicketDialogComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,9 +32,17 @@ import { SessionInterceptorService } from './services/user/session-interceptor.s
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    DragDropModule
+    DragDropModule,
+    MatDialogModule
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: SessionInterceptorService, multi: true }],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: SessionInterceptorService,
+      multi: true
+    }
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [NewTicketDialogComponent]
 })
 export class AppModule {}

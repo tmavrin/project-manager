@@ -4,10 +4,12 @@ import { CommonModule } from '@angular/common';
 
 import { ColumnComponent } from './../../components/column/column.component';
 import { TicketComponent } from './../../components/ticket/ticket.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { NewTicketDialogComponent } from 'src/app/components/new-ticket-dialog/new-ticket-dialog.component';
 
 @NgModule({
-  declarations: [ColumnComponent, TicketComponent],
+  declarations: [ColumnComponent, TicketComponent, MatDialogModule],
   imports: [CommonModule],
-  exports: [TicketComponent, DragDropModule]
+  exports: [TicketComponent, DragDropModule, MatDialogModule]
 })
 export class HomeModule {}
