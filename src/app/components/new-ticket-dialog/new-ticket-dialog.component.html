@@ -1,5 +1,27 @@
 <div class="dialog-box">
-  <div class="dialog-title">
+  <form>
+    <input autocomplete="off" type="text" id="ticket-title" placeholder="Ticket Title" />
+    <input autocomplete="off" type="text" id="ticket-subtitle" placeholder="Subtitle or subcategory of the ticket" />
 
-  </div>
+    <div class="description-box">
+      <p>Description</p>
+      <textarea placeholder="Write some description about this ticket" type="text" id="ticket-desc"></textarea>
+    </div>
+
+    <div class="other-options">
+      <div class="ticket-assigned">
+        <p>Assigned Users</p>
+        <img src="assets/ticket/add-new.svg" />
+      </div>
+      <div class="ticket-due-date">
+        <p>Due Date</p>
+        <img src="assets/ticket/add-new.svg" />
+      </div>
+    </div>
+
+    <div class="ticket-buttons">
+      <button>Discard</button>
+      <button>Add Ticket</button>
+    </div>
+  </form>
 </div>

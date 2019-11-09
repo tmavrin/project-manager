@@ -8,8 +8,39 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+.mat-dialog-container {
+  padding: 0 !important;
+  border-radius: 6px !important;
+}
+
+input,
+textarea {
+  letter-spacing: 1px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  padding: 0 20px;
+}
+
+button {
+  background: #434343;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  font-size: 20px;
+  color: white;
+}
+
+button:hover {
+  background: #434343;
+}
+
+button:active {
+  box-shadow: inset -2px -2px 3px #a8a8a8;
+}

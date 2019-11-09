@@ -7,6 +7,23 @@
   flex-direction: column;
 }
 
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7c7c7c;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #434343;
+}
+
 .column-title {
   display: flex;
   justify-content: space-between;
@@ -24,7 +41,9 @@
 
 .column-tickets {
   width: 90%;
+  padding: 5px;
   margin: 9px auto;
+  overflow-y: scroll;
 
   app-ticket {
     margin: 7px 0;

@@ -1,0 +1,81 @@
+.dialog-box {
+  width: 630px;
+  height: 380px;
+  background: #C4C4C4;
+  padding: 30px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    #ticket-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2F2F2F;
+
+    }
+
+    #ticket-subtitle {
+      font-size: 18px;
+      color: #434343;
+      margin: 20px 0px;
+    }
+
+    .description-box {
+      width: 620px;
+      height: 30%;
+      background: #ffffff4d;
+      border-radius: 4px;
+      margin: 5px 0;
+
+      p {
+        margin: 10px 15px;
+      }
+
+      textarea {
+        margin: 0 15px 15px 15px;
+        width: 570px;
+        border: none;
+        border-radius: 4px;
+        font-size: 14px;
+        padding: 5px 10px;
+        height: 75px;
+        resize: none;
+      }
+    }
+
+    .other-options {
+      display: flex;
+      margin: 15px 0;
+      justify-content: space-between;
+    }
+
+    .ticket-assigned,
+    .ticket-due-date {
+      background: #ffffff4d;
+      width: 45%;
+      border-radius: 4px;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .ticket-buttons {
+      margin: 10px 0;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}
+
+input {
+  background: white;
+  border-radius: 4px;
+  border: none;
+  margin: 5px 0px;
+  padding: 5px 10px;
+}
