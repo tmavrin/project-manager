@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { TicketService } from 'src/app/services/board/ticket.service';
 
 @Component({
   selector: 'app-new-ticket-dialog',
@@ -9,10 +10,15 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class NewTicketDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<NewTicketDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private ticketService: TicketService
   ) {}
 
-  onNoClick(): void {
+  close() {
     this.dialogRef.close();
+  }
+
+  addTicket() {
+    this.ticketService.addMockTicket('boardId', 'columnId');
   }
 }

@@ -44,10 +44,10 @@ export class TicketService {
   public getMockColumnTickets() {
     return [ticket1, ticket2, ticket3];
   }
-  public getColumnTickets(columnUid: string): Promise<any> {
+  public getColumnTickets(columnId: string): Promise<any> {
     return new Promise((resolve, reject) => {
       this.http
-        .get(serverConfig.apiAddress)
+        .get(serverConfig.apiAddress + '/column')
         .toPromise()
         .then(
           response => {
@@ -55,6 +55,29 @@ export class TicketService {
           },
           error => {
             console.log(error);
+            reject(error);
+          }
+        );
+    });
+  }
+
+  public addMockTicket(boardId: string, columnId: string) {
+    return true;
+  }
+
+  public addTicket(boardId: string, columnId: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.http
+        .post(serverConfig.apiAddress + '/column/addTicket', {
+          boardId,
+          columnId
+        })
+        .toPromise()
+        .then(
+          response => {
+            resolve(response);
+          },
+          error => {
             reject(error);
           }
         );
