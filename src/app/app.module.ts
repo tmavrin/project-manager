@@ -14,7 +14,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SessionInterceptorService } from './services/user/session-interceptor.service';
 import { MatDialogModule } from '@angular/material/dialog';
-import { NewTicketDialogComponent } from './components/new-ticket-dialog/new-ticket-dialog.component';
+import { TicketDialogComponent } from './components/ticket-dialog/ticket-dialog.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { NewTicketDialogComponent } from './components/new-ticket-dialog/new-tic
     HomeComponent,
     ColumnComponent,
     TicketComponent,
-    NewTicketDialogComponent
+    TicketDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +43,6 @@ import { NewTicketDialogComponent } from './components/new-ticket-dialog/new-tic
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [NewTicketDialogComponent]
+  entryComponents: [TicketDialogComponent]
 })
 export class AppModule {}

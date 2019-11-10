@@ -3,13 +3,13 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TicketService } from 'src/app/services/board/ticket.service';
 
 @Component({
-  selector: 'app-new-ticket-dialog',
-  templateUrl: './new-ticket-dialog.component.html',
-  styleUrls: ['./new-ticket-dialog.component.scss']
+  selector: 'app-ticket-dialog',
+  templateUrl: './ticket-dialog.component.html',
+  styleUrls: ['./ticket-dialog.component.scss']
 })
-export class NewTicketDialogComponent {
+export class TicketDialogComponent {
   constructor(
-    public dialogRef: MatDialogRef<NewTicketDialogComponent>,
+    public dialogRef: MatDialogRef<TicketDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private ticketService: TicketService
   ) {}

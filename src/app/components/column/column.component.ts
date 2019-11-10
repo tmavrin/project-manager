@@ -8,7 +8,7 @@ import {
 import { Column } from './../../services/board/board.service';
 import { TicketService, Ticket } from './../../services/board/ticket.service';
 import { MatDialog } from '@angular/material/dialog';
-import { NewTicketDialogComponent } from '../new-ticket-dialog/new-ticket-dialog.component';
+import { TicketDialogComponent } from '../ticket-dialog/ticket-dialog.component';
 
 @Component({
   selector: 'app-column',
@@ -43,7 +43,7 @@ export class ColumnComponent implements OnInit {
   }
 
   addTicket() {
-    const dialogRef = this.dialog.open(NewTicketDialogComponent, {
+    const dialogRef = this.dialog.open(TicketDialogComponent, {
       data: {}
     });
 
