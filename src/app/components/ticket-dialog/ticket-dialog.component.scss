@@ -73,9 +73,18 @@
 }
 
 input {
-  background: white;
+  background: #C4C4C4;
   border-radius: 4px;
   border: none;
   margin: 5px 0px;
   padding: 5px 10px;
+  transition: background .4s ease;
+}
+
+input:focus {
+  background: white;
+}
+
+input.new-ticket-mode {
+  background: white !important;
 }

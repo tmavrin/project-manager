@@ -1,7 +1,9 @@
 <div class="dialog-box">
   <form>
-    <input autocomplete="off" type="text" id="ticket-title" placeholder="Ticket Title" />
-    <input autocomplete="off" type="text" id="ticket-subtitle" placeholder="Subtitle or subcategory of the ticket" />
+    <input [ngClass]="{'new-ticket-mode': newTicket}" autocomplete="off" type="text" id="ticket-title"
+      placeholder="Ticket Title" />
+    <input [ngClass]="{'new-ticket-mode': newTicket}" autocomplete="off" type="text" id="ticket-subtitle"
+      placeholder="Subtitle or subcategory of the ticket" />
 
     <div class="description-box">
       <p>Description</p>
@@ -20,8 +22,8 @@
     </div>
 
     <div class="ticket-buttons">
-      <button (click)="close()">Discard</button>
-      <button (click)="addTicket()">Add Ticket</button>
+      <button (click)="close()">Close</button>
+      <button *ngIf="newTicket" (click)="addTicket()">Add Ticket</button>
     </div>
   </form>
 </div>

@@ -8,11 +8,15 @@ import { TicketService } from 'src/app/services/board/ticket.service';
   styleUrls: ['./ticket-dialog.component.scss']
 })
 export class TicketDialogComponent {
+  newTicket = false;
+
   constructor(
     public dialogRef: MatDialogRef<TicketDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private ticketService: TicketService
-  ) {}
+  ) {
+    this.newTicket = data.newTicket;
+  }
 
   close() {
     this.dialogRef.close();
