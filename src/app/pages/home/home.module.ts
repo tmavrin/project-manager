@@ -5,7 +5,6 @@ import { CommonModule } from '@angular/common';
 import { ColumnComponent } from './../../components/column/column.component';
 import { TicketComponent } from './../../components/ticket/ticket.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { TicketDialogComponent } from 'src/app/components/ticket-dialog/ticket-dialog.component';
 
 @NgModule({
   declarations: [ColumnComponent, TicketComponent, MatDialogModule],

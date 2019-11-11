@@ -28,23 +28,29 @@
     </div>
 
     <div class="other-options">
-      <div class="ticket-assigned">
-        <div class="other-options-title">
-          <p>Assigned User</p>
-          <img src="assets/ticket/add-new.svg" />
-        </div>
-        <div class="other-options-users">
-          <div *ngIf="ticket?.assigned" class="o-user">
-            <img src="assets/ticket/user.svg" />
-            <p>{{ ticket?.assigned?.name }}</p>
-          </div>
+      <div *ngIf="!ticket?.assigned" class="ticket-assigned">
+        <p>Assigned User</p>
+        <img src="assets/ticket/add-new.svg" />
+      </div>
+      <div *ngIf="ticket?.assigned" class="ticket-assigned">
+        <p>Assigned User</p>
+        <div class="a-user">
+          <img src="assets/ticket/user.svg" />
+          <p>{{ ticket?.assigned.name }}</p>
         </div>
       </div>
-      <div class="ticket-due-date">
-        <div class="other-options-title">
-          <p>Due Date</p>
-          <img src="assets/ticket/add-new.svg" />
-        </div>
+      <div *ngIf="!ticket?.deadline" class="ticket-due-date">
+        <input
+          matInput
+          [matDatepicker]="picker"
+          placeholder="Choose a due date"
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </div>
+      <div *ngIf="ticket?.deadline" class="ticket-due-date">
+        <p>Deadline</p>
+        <p>{{ ticket.deadline | date: 'short' }}</p>
       </div>
     </div>
 

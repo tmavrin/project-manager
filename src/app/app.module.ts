@@ -15,6 +15,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { SessionInterceptorService } from './services/user/session-interceptor.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TicketDialogComponent } from './components/ticket-dialog/ticket-dialog.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { TicketDialogComponent } from './components/ticket-dialog/ticket-dialog.
     ReactiveFormsModule,
     FormsModule,
     DragDropModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
     {

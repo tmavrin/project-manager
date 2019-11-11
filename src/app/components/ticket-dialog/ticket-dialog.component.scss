@@ -1,8 +1,9 @@
 .dialog-box {
   width: 630px;
-  height: 380px;
+  height: 400px;
   background: #C4C4C4;
   padding: 30px;
+  overflow: hidden;
 
   form {
     display: flex;
@@ -57,35 +58,17 @@
       border-radius: 4px;
       padding: 10px;
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
 
-      .other-options-title {
-        display: flex;
-        justify-content: space-between;
-
-        p {
-          margin: 0 0 0 5px;
-        }
+      p {
+        margin: 0 0 0 5px;
+        line-height: 40px;
       }
+    }
 
-      .other-options-users {
-        margin: 10px 0;
+    .ticket-assigned {
+      .a-user {
         display: flex;
-        flex-wrap: wrap;
-        overflow: hidden;
-
-        .o-user {
-          display: flex;
-
-          img {
-            margin-right: 7px;
-          }
-
-          p {
-            line-height: 24px;
-            margin: 0;
-          }
-        }
       }
     }
 

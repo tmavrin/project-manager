@@ -13,7 +13,8 @@ const ticket1: Ticket = {
     name: 'username1',
     email: 'email1'
   },
-  description: 'Some test1 description'
+  description: 'Some test1 description',
+  deadline: new Date()
 };
 const ticket2: Ticket = {
   title: 'test title2',
