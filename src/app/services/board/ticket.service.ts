@@ -9,30 +9,34 @@ const ticket1: Ticket = {
   subtitle: 'test subtitle',
   dateCreated: new Date(),
   createdBy: {
-    uid: 'user_uid',
-    name: 'username',
-    email: 'email'
-  }
+    uid: 'user_uid1',
+    name: 'username1',
+    email: 'email1'
+  },
+  description: 'Some test1 description'
 };
 const ticket2: Ticket = {
   title: 'test title2',
   subtitle: 'test subtitle2',
   dateCreated: new Date(),
   createdBy: {
-    uid: 'user_uid',
-    name: 'username',
-    email: 'email'
-  }
+    uid: 'user_uid2',
+    name: 'username2',
+    email: 'email2'
+  },
+  description: 'Some test2 description',
+  assigned: { uid: 'user_uid2', name: 'username2', email: 'email2' }
 };
 const ticket3: Ticket = {
   title: 'test title3',
   subtitle: 'test subtitle3',
   dateCreated: new Date(),
   createdBy: {
-    uid: 'user_uid',
-    name: 'username',
-    email: 'email'
-  }
+    uid: 'user_uid3',
+    name: 'username3',
+    email: 'email3'
+  },
+  description: 'Some test3 description'
 };
 
 @Injectable({
@@ -89,6 +93,7 @@ export interface Ticket {
   title: string;
   subtitle: string;
   comments?: Comment[];
+  description?: string;
   dateCreated: Date;
   deadline?: Date;
   assigned?: User;

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { TicketService } from 'src/app/services/board/ticket.service';
+import { TicketService, Ticket } from 'src/app/services/board/ticket.service';
 
 @Component({
   selector: 'app-ticket-dialog',
@@ -9,6 +9,7 @@ import { TicketService } from 'src/app/services/board/ticket.service';
 })
 export class TicketDialogComponent {
   newTicket = false;
+  ticket: Ticket;
 
   constructor(
     public dialogRef: MatDialogRef<TicketDialogComponent>,
@@ -16,6 +17,7 @@ export class TicketDialogComponent {
     private ticketService: TicketService
   ) {
     this.newTicket = data.newTicket;
+    this.ticket = data.ticket;
   }
 
   close() {

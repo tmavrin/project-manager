@@ -19,7 +19,8 @@ export class TicketComponent implements OnInit {
   editTicket() {
     const dialogRef = this.dialog.open(TicketDialogComponent, {
       data: {
-        newTicket: false
+        newTicket: false,
+        ticket: this.ticket
       },
       autoFocus: false
     });

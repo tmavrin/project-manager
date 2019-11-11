@@ -18,7 +18,7 @@
     #ticket-subtitle {
       font-size: 18px;
       color: #434343;
-      margin: 20px 0px;
+      margin: 10px 0px;
     }
 
     .description-box {
@@ -38,7 +38,7 @@
         border: none;
         border-radius: 4px;
         font-size: 14px;
-        padding: 5px 10px;
+        padding: 10px;
         height: 75px;
         resize: none;
       }
@@ -57,10 +57,35 @@
       border-radius: 4px;
       padding: 10px;
       display: flex;
-      justify-content: space-between;
+      flex-direction: column;
 
-      p {
-        margin: 0;
+      .other-options-title {
+        display: flex;
+        justify-content: space-between;
+
+        p {
+          margin: 0 0 0 5px;
+        }
+      }
+
+      .other-options-users {
+        margin: 10px 0;
+        display: flex;
+        flex-wrap: wrap;
+        overflow: hidden;
+
+        .o-user {
+          display: flex;
+
+          img {
+            margin-right: 7px;
+          }
+
+          p {
+            line-height: 24px;
+            margin: 0;
+          }
+        }
       }
     }
 
