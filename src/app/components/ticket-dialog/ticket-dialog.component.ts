@@ -1,6 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogRef,
+  MatDialog
+} from '@angular/material/dialog';
 import { TicketService, Ticket } from 'src/app/services/board/ticket.service';
+import { UserSelectionDialogComponent } from '../user-selection-dialog/user-selection-dialog.component';
 
 @Component({
   selector: 'app-ticket-dialog',
@@ -14,7 +19,8 @@ export class TicketDialogComponent {
   constructor(
     public dialogRef: MatDialogRef<TicketDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private ticketService: TicketService
+    private ticketService: TicketService,
+    private dialog: MatDialog
   ) {
     this.newTicket = data.newTicket;
     this.ticket = data.ticket;
@@ -29,6 +35,13 @@ export class TicketDialogComponent {
   }
 
   assignUser() {
-    this.ticketService.assignUserToTicket('ticketId', 'userId');
+    const dialogRef = this.dialog.open(UserSelectionDialogComponent, {
+      data: {
+        newTicket: true
+      },
+      autoFocus: true
+    });
+
+    dialogRef.afterClosed().subscribe(result => {});
   }
 }
