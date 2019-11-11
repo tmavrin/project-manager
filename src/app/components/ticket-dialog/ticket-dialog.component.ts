@@ -27,4 +27,8 @@ export class TicketDialogComponent {
   addTicket() {
     this.ticketService.addMockTicket('boardId', 'columnId');
   }
+
+  assignUser() {
+    this.ticketService.assignUserToTicket('ticketId', 'userId');
+  }
 }

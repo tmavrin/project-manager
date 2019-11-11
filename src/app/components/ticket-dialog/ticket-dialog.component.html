@@ -28,11 +28,19 @@
     </div>
 
     <div class="other-options">
-      <div *ngIf="!ticket?.assigned" class="ticket-assigned">
+      <div
+        *ngIf="!ticket?.assigned"
+        class="ticket-assigned"
+        (click)="asssignUser()"
+      >
         <p>Assigned User</p>
         <img src="assets/ticket/add-new.svg" />
       </div>
-      <div *ngIf="ticket?.assigned" class="ticket-assigned">
+      <div
+        *ngIf="ticket?.assigned"
+        class="ticket-assigned"
+        (click)="asssignUser()"
+      >
         <p>Assigned User</p>
         <div class="a-user">
           <img src="assets/ticket/user.svg" />

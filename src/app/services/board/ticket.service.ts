@@ -88,6 +88,29 @@ export class TicketService {
         );
     });
   }
+
+  public mockAssignUserToTicket(ticketId: string, userId: string) {
+    return true;
+  }
+
+  public assignUserToTicket(ticketId: string, userId: string) {
+    return new Promise((resolve, reject) => {
+      this.http
+        .post(serverConfig.apiAddress + '/ticket/assignUser', {
+          ticketId,
+          userId
+        })
+        .toPromise()
+        .then(
+          response => {
+            resolve(response);
+          },
+          error => {
+            reject(error);
+          }
+        );
+    });
+  }
 }
 
 export interface Ticket {
