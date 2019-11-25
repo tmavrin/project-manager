@@ -18,6 +18,7 @@ import { TicketDialogComponent } from './components/ticket-dialog/ticket-dialog.
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { UserSelectionDialogComponent } from './components/user-selection-dialog/user-selection-dialog.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { UserSelectionDialogComponent } from './components/user-selection-dialog
     ColumnComponent,
     TicketComponent,
     TicketDialogComponent,
-    UserSelectionDialogComponent
+    UserSelectionDialogComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

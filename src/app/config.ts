@@ -1,3 +1,3 @@
 export const serverConfig = {
-  apiAddress: 'http://localhost:8080'
+  apiAddress: "http://127.0.0.1:8080"
 };
