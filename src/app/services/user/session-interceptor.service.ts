@@ -22,7 +22,7 @@ export class SessionInterceptorService implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const authHeaders = this.authService.getAuthHeaders();
     request = request.clone({ headers: new HttpHeaders(authHeaders) });
-    console.log(request.headers);
+    console.log(request);
     return next.handle(request);
   }
 }

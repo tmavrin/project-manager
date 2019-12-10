@@ -45,6 +45,33 @@ export class AuthService {
         );
     });
   }
+
+  public register(email: string, password: string, name: string): Promise<any> {
+
+    return new Promise((resolve, reject) => {
+      this.http
+        .post(serverConfig.apiAddress + '/register', {id: '', name, email, password})
+        .toPromise()
+        .then(
+          (data: any) => {
+            console.log(data);
+            if (data.status === 'failure') {
+              this.isAuthenticated = false;
+              reject('Invalid login info. No user with credentials found');
+            } else {
+              this.isAuthenticated = true;
+              resolve(data.response);
+            }
+          },
+          (error: HttpErrorResponse) => {
+            // Unauthorized or other errors
+            this.isAuthenticated = false;
+            console.log(error);
+            reject(error);
+          }
+        );
+    });
+  }
 }
 
 export interface User {

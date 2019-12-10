@@ -1,1 +1,10 @@
-<p>register works!</p>
+<div class="register-page">
+  <form [formGroup]="registerForm" class="register-form">
+    <h2>Register</h2>
+    <input formControlName="name" type="text" placeholder="Name">
+    <input formControlName="email" type="text" placeholder="Email">
+    <input formControlName="pass" type="password" placeholder="Password">
+    <button (click)="onRegisterButton()">REGISTER</button>
+    <p routerLink="/login">Back to Login</p>
+  </form>
+</div>
