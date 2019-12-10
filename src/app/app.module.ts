@@ -21,6 +21,7 @@ import { UserSelectionDialogComponent } from './components/user-selection-dialog
 import { RegisterComponent } from './pages/register/register.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CreateBoardDialogComponent } from './components/create-board-dialog/create-board-dialog.component';
+import { SelectBoardDialogComponent } from './components/select-board-dialog/select-board-dialog.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CreateBoardDialogComponent } from './components/create-board-dialog/cre
     TicketDialogComponent,
     UserSelectionDialogComponent,
     RegisterComponent,
-    CreateBoardDialogComponent
+    CreateBoardDialogComponent,
+    SelectBoardDialogComponent
   ],
   imports: [
     BrowserModule,
