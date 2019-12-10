@@ -10,7 +10,15 @@ import { Ticket, TicketService } from './ticket.service';
   providedIn: 'root'
 })
 export class BoardService {
-  constructor(private http: HttpClient, private ticketService: TicketService) {}
+  constructor(private http: HttpClient, private ticketService: TicketService) { }
+
+  public getAllUserBoards(): Promise<Board[]> {
+    return new Promise<Board[]>((resolve, reject) => {
+      this.http.get<Board[]>(serverConfig.apiAddress + '/user/get_boards').toPromise().then((boards: Board[]) => {
+        resolve(boards);
+      });
+    });
+  }
 
   public getBoard(boardId: string): Promise<Board> {
     return new Promise((resolve, reject) => {
@@ -26,6 +34,18 @@ export class BoardService {
             reject(error);
           }
         );
+    });
+  }
+
+  public createBoard(name: string, description: string) {
+    return new Promise((resolve, reject) => {
+      this.http.post(serverConfig.apiAddress + '/user/create_board', { name, description }).toPromise().then((data: any) => {
+        if (data.status === 'failure') {
+          reject();
+        } else {
+          resolve();
+        }
+      });
     });
   }
 

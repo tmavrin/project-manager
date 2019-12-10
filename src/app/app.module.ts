@@ -20,6 +20,7 @@ import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { UserSelectionDialogComponent } from './components/user-selection-dialog/user-selection-dialog.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CreateBoardDialogComponent } from './components/create-board-dialog/create-board-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     TicketComponent,
     TicketDialogComponent,
     UserSelectionDialogComponent,
-    RegisterComponent
+    RegisterComponent,
+    CreateBoardDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +55,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [TicketDialogComponent, UserSelectionDialogComponent]
+  entryComponents: [TicketDialogComponent, UserSelectionDialogComponent, CreateBoardDialogComponent]
 })
 export class AppModule {}

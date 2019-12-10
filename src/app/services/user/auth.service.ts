@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpResponse, HttpEventType } from '@angular/common/http';
 
 import { serverConfig } from './../../config';
 
@@ -38,7 +38,6 @@ export class AuthService {
             }
           },
           (error: HttpErrorResponse) => {
-            // Unauthorized or other errors
             this.isAuthenticated = false;
             reject(error);
           }
@@ -47,7 +46,6 @@ export class AuthService {
   }
 
   public register(email: string, password: string, name: string): Promise<any> {
-
     return new Promise((resolve, reject) => {
       this.http
         .post(serverConfig.apiAddress + '/register', {id: '', name, email, password})
@@ -56,16 +54,12 @@ export class AuthService {
           (data: any) => {
             console.log(data);
             if (data.status === 'failure') {
-              this.isAuthenticated = false;
-              reject('Invalid login info. No user with credentials found');
+              reject('User aleready exists!');
             } else {
-              this.isAuthenticated = true;
               resolve(data.response);
             }
           },
           (error: HttpErrorResponse) => {
-            // Unauthorized or other errors
-            this.isAuthenticated = false;
             console.log(error);
             reject(error);
           }

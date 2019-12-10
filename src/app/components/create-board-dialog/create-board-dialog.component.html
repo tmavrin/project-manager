@@ -1,0 +1,27 @@
+<div class="create-board-box">
+  <h2>Create a board.</h2>
+  <form [formGroup]="boardForm">
+    <input
+      formControlName="title"
+      autocomplete="off"
+      type="text"
+      id="board-title"
+      placeholder="Board Title"
+    />
+    <div class="description-box">
+      <p>Description</p>
+      <textarea
+        formControlName="description"
+        placeholder="Write some description about this board"
+        type="text"
+        id="board-desc"
+      ></textarea>
+    </div>
+
+    <div class="ticket-buttons">
+      <button (click)="close()">Close</button>
+      <button (click)="createBoard()">Create Board</button>
+    </div>
+
+  </form>
+</div>

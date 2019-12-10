@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from './../../services/user/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   invalidLogin: boolean;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router,  private snackBar: MatSnackBar) {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, Validators.email])],
       pass: ['', Validators.compose([Validators.required, Validators.minLength(1)])]
@@ -32,7 +33,10 @@ export class LoginComponent implements OnInit {
           this.router.navigateByUrl('/home');
         },
         rejected => {
-          this.invalidLogin = true;
+          const snack = this.snackBar.open('Login Failed. Please try again');
+          setTimeout(() => {
+            snack.dismiss();
+          }, 3500);
         }
       );
     } else {
