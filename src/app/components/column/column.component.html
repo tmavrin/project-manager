@@ -1,6 +1,6 @@
 <div class="column-comp" cdkDropList [cdkDropListData]="column?.tickets" (cdkDropListDropped)="drop($event)">
   <div class="column-title">
-    <p>Column Title</p>
+    <p>{{column?.name}}</p>
     <img (click)="addTicket()" src="assets/column/add.svg">
   </div>
   <div class="column-tickets">

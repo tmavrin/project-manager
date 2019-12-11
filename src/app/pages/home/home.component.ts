@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Board, BoardService } from './../../services/board/board.service';
+import { Board, BoardService, Column } from './../../services/board/board.service';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateBoardDialogComponent } from 'src/app/components/create-board-dialog/create-board-dialog.component';
 import { SelectBoardDialogComponent } from 'src/app/components/select-board-dialog/select-board-dialog.component';
@@ -37,6 +37,8 @@ export class HomeComponent implements OnInit {
     this.boardService.getAllUserBoards().then((boards: Board[]) => {
       if (boards.length === 0) {
         this.openCreateBoardDialog();
+      } else if (boards.length === 1) {
+        this.getBoard(boards[0].id);
       } else {
         this.selectBoard();
       }
@@ -49,9 +51,14 @@ export class HomeComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.boardService.getBoard(result).then((board: Board) => {
-        this.board = board;
-      });
+      this.getBoard(result.boardId);
+    });
+  }
+
+  getBoard(boardId: string) {
+    this.boardService.getBoard(boardId).then((board: Board) => {
+      this.board = board;
+      console.log(board);
     });
   }
 }

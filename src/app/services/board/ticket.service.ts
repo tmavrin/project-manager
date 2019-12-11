@@ -4,41 +4,6 @@ import { Injectable } from '@angular/core';
 import { serverConfig } from './../../config';
 import { User } from './../user/auth.service';
 
-const ticket1: Ticket = {
-  title: 'test title',
-  subtitle: 'test subtitle',
-  dateCreated: new Date(),
-  createdBy: {
-    uid: 'user_uid1',
-    name: 'username1',
-    email: 'email1'
-  },
-  description: 'Some test1 description',
-  deadline: new Date()
-};
-const ticket2: Ticket = {
-  title: 'test title2',
-  subtitle: 'test subtitle2',
-  dateCreated: new Date(),
-  createdBy: {
-    uid: 'user_uid2',
-    name: 'username2',
-    email: 'email2'
-  },
-  description: 'Some test2 description',
-  assigned: { uid: 'user_uid2', name: 'username2', email: 'email2' }
-};
-const ticket3: Ticket = {
-  title: 'test title3',
-  subtitle: 'test subtitle3',
-  dateCreated: new Date(),
-  createdBy: {
-    uid: 'user_uid3',
-    name: 'username3',
-    email: 'email3'
-  },
-  description: 'Some test3 description'
-};
 
 @Injectable({
   providedIn: 'root'
@@ -46,9 +11,6 @@ const ticket3: Ticket = {
 export class TicketService {
   constructor(private http: HttpClient) {}
 
-  public getMockColumnTickets() {
-    return [ticket1, ticket2, ticket3];
-  }
   public getColumnTickets(columnId: string): Promise<any> {
     return new Promise((resolve, reject) => {
       this.http
@@ -70,13 +32,11 @@ export class TicketService {
     return true;
   }
 
-  public addTicket(boardId: string, columnId: string): Promise<any> {
+  public addTicket(ticket: Ticket): Promise<any> {
+    console.log(ticket);
     return new Promise((resolve, reject) => {
       this.http
-        .post(serverConfig.apiAddress + '/column/addTicket', {
-          boardId,
-          columnId
-        })
+        .post(serverConfig.apiAddress + '/ticket/create', ticket)
         .toPromise()
         .then(
           response => {
@@ -114,14 +74,14 @@ export class TicketService {
 }
 
 export interface Ticket {
+  column_id: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
   comments?: Comment[];
   description?: string;
-  dateCreated: Date;
   deadline?: Date;
   assigned?: User;
-  createdBy: User;
+  createdBy?: User;
 }
 
 export interface Comment {

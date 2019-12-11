@@ -45,11 +45,14 @@ export class ColumnComponent implements OnInit {
   addTicket() {
     const dialogRef = this.dialog.open(TicketDialogComponent, {
       data: {
-        newTicket: true
+        newTicket: true,
+        columnId: this.column.id
       },
       autoFocus: true
     });
 
-    dialogRef.afterClosed().subscribe(result => {});
+    dialogRef.afterClosed().subscribe(resultTicket => {
+      this.column.tickets.push(resultTicket);
+    });
   }
 }

@@ -14,7 +14,7 @@ export class BoardService {
 
   public getAllUserBoards(): Promise<Board[]> {
     return new Promise<Board[]>((resolve, reject) => {
-      this.http.get<Board[]>(serverConfig.apiAddress + '/user/get_boards').toPromise().then((boards: Board[]) => {
+      this.http.get<Board[]>(serverConfig.apiAddress + '/user/boards').toPromise().then((boards: Board[]) => {
         resolve(boards);
       });
     });
@@ -23,7 +23,7 @@ export class BoardService {
   public getBoard(boardId: string): Promise<Board> {
     return new Promise((resolve, reject) => {
       this.http
-        .get(serverConfig.apiAddress + '/user/board')
+        .get(serverConfig.apiAddress + '/user/board?boardId=' + boardId)
         .toPromise()
         .then(
           response => {
@@ -48,50 +48,17 @@ export class BoardService {
       });
     });
   }
-
-  public getMockBoard(): Promise<Board> {
-    const column1: Column = {
-      name: 'Column Title 1',
-      tickets: this.ticketService.getMockColumnTickets()
-    };
-
-    const column2: Column = {
-      name: 'Column Title 2',
-      tickets: this.ticketService.getMockColumnTickets()
-    };
-
-    const column3: Column = {
-      name: 'Column Title 3',
-      tickets: this.ticketService.getMockColumnTickets()
-    };
-
-    const column4: Column = {
-      name: 'Column Title 4',
-      tickets: this.ticketService.getMockColumnTickets()
-    };
-
-    const column5: Column = {
-      name: 'Column Title 5',
-      tickets: this.ticketService.getMockColumnTickets()
-    };
-
-    const mockBoard: Board = {
-      name: 'Board Title',
-      columns: [column1, column2, column3, column4, column5]
-    };
-
-    return new Promise<Board>((resolve, reject) => {
-      resolve(mockBoard);
-    });
-  }
 }
 
 export interface Column {
+  id: string;
   name: string;
   tickets: Ticket[];
 }
 
 export interface Board {
+  id: string;
   name: string;
-  columns: Column[];
+  description: string;
+  columnList: Column[];
 }

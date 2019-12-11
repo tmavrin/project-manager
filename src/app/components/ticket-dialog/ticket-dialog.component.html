@@ -1,6 +1,7 @@
 <div class="dialog-box">
-  <form>
+  <form [formGroup]="ticketForm">
     <input
+      formControlName="title"
       [ngClass]="{ 'new-ticket-mode': newTicket }"
       autocomplete="off"
       type="text"
@@ -20,6 +21,7 @@
     <div class="description-box">
       <p>Description</p>
       <textarea
+        formControlName="description"
         placeholder="Write some description about this ticket"
         type="text"
         id="ticket-desc"

@@ -6,6 +6,7 @@ import {
 } from '@angular/material/dialog';
 import { TicketService, Ticket } from 'src/app/services/board/ticket.service';
 import { UserSelectionDialogComponent } from '../user-selection-dialog/user-selection-dialog.component';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-ticket-dialog',
@@ -16,22 +17,40 @@ export class TicketDialogComponent {
   newTicket = false;
   ticket: Ticket;
 
+  ticketForm: FormGroup;
+  columnId: string;
+
   constructor(
     public dialogRef: MatDialogRef<TicketDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private ticketService: TicketService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private formBuilder: FormBuilder
   ) {
     this.newTicket = data.newTicket;
     this.ticket = data.ticket;
+    this.columnId = data.columnId;
+
+    this.ticketForm = this.formBuilder.group({
+      title: ['', Validators.required],
+      description: [''],
+    });
   }
 
-  close() {
-    this.dialogRef.close();
+  close(returnTicket: Ticket) {
+    this.dialogRef.close(returnTicket);
   }
 
   addTicket() {
-    this.ticketService.addMockTicket('boardId', 'columnId');
+    const t: Ticket = {
+      title: this.ticketForm.getRawValue().title,
+      description: this.ticketForm.getRawValue().description,
+      column_id: this.columnId
+    };
+
+    this.ticketService.addTicket(t).then(res => {
+      this.close(res);
+    });
   }
 
   assignUser() {
@@ -44,4 +63,5 @@ export class TicketDialogComponent {
 
     dialogRef.afterClosed().subscribe(result => {});
   }
+
 }
