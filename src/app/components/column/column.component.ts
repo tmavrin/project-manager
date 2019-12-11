@@ -25,7 +25,7 @@ export class ColumnComponent implements OnInit {
 
   ngOnInit() {}
 
-  drop(event: CdkDragDrop<Ticket[]>) {
+  async drop(event: CdkDragDrop<Ticket[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(
         event.container.data,
@@ -33,13 +33,18 @@ export class ColumnComponent implements OnInit {
         event.currentIndex
       );
     } else {
-      transferArrayItem(
-        event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex
-      );
+      const movedTicket: Ticket = event.previousContainer.data[event.previousIndex];
+      movedTicket.column_id = this.column.id;
+      await this.ticketService.moveTicket(movedTicket).then(() => {
+        transferArrayItem(
+          event.previousContainer.data,
+          event.container.data,
+          event.previousIndex,
+          event.currentIndex
+        );
+      });
     }
+
   }
 
   addTicket() {

@@ -71,6 +71,10 @@ export class TicketService {
         );
     });
   }
+
+  public moveTicket(ticket: Ticket): Promise<any> {
+    return this.http.post(serverConfig.apiAddress + '/ticket/move', ticket).toPromise();
+  }
 }
 
 export interface Ticket {
