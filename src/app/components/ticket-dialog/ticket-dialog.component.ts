@@ -37,8 +37,8 @@ export class TicketDialogComponent {
     });
   }
 
-  close(returnTicket: Ticket) {
-    this.dialogRef.close(returnTicket);
+  close(result: number, returnTicket: Ticket) {
+    this.dialogRef.close({ result, ticket: returnTicket });
   }
 
   addTicket() {
@@ -49,7 +49,7 @@ export class TicketDialogComponent {
     };
 
     this.ticketService.addTicket(t).then(res => {
-      this.close(res);
+      this.close(1, res);
     });
   }
 
@@ -62,6 +62,14 @@ export class TicketDialogComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {});
+  }
+
+  delete() {
+    this.ticketService.deleteTicket(this.ticket.id).then((result: any) => {
+      if (result.status === 'success') {
+        this.close(-1, this.ticket);
+      }
+    });
   }
 
 }

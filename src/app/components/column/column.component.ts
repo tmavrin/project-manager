@@ -56,8 +56,16 @@ export class ColumnComponent implements OnInit {
       autoFocus: true
     });
 
-    dialogRef.afterClosed().subscribe(resultTicket => {
-      this.column.tickets.push(resultTicket);
+    dialogRef.afterClosed().subscribe((resultTicket: { result, ticket }) => {
+      console.log(resultTicket);
+      if (resultTicket.result === 1) {
+        this.column.tickets.push(resultTicket.ticket);
+      }
     });
+  }
+
+  deleteTicket(delTicket: Ticket) {
+    const index = this.column.tickets.indexOf(delTicket);
+    this.column.tickets.splice(index, 1);
   }
 }

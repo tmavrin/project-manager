@@ -21,12 +21,16 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.onLoginButton();
+  }
 
   onLoginButton() {
-    if (this.loginForm.valid) {
-      const email = this.loginForm.getRawValue().email;
-      const password = this.loginForm.getRawValue().pass;
+    // if (this.loginForm.valid) {
+      // const email = this.loginForm.getRawValue().email;
+      // const password = this.loginForm.getRawValue().pass;
+      const email = "t@mail.com";
+      const password = "123123";
       this.authService.login(email, password).then(
         successs => {
           this.invalidLogin = false;
@@ -39,8 +43,8 @@ export class LoginComponent implements OnInit {
           }, 3500);
         }
       );
-    } else {
-      console.log('invalid login');
-    }
+    // } else {
+    //   console.log('invalid login');
+   // }
   }
 }

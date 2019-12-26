@@ -75,9 +75,14 @@ export class TicketService {
   public moveTicket(ticket: Ticket): Promise<any> {
     return this.http.post(serverConfig.apiAddress + '/ticket/move', ticket).toPromise();
   }
+
+  public deleteTicket(ticketId: string) {
+    return this.http.post(serverConfig.apiAddress + '/ticket/delete?ticketId=' + ticketId, {}).toPromise();
+  }
 }
 
 export interface Ticket {
+  id?: string;
   column_id: string;
   title: string;
   subtitle?: string;

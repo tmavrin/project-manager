@@ -65,7 +65,8 @@
     </div>
 
     <div class="ticket-buttons">
-      <button (click)="close()">Close</button>
+      <button (click)="close(0,undefined)">Close</button>
+      <button *ngIf="!newTicket" (click)="delete()">Delete</button>
       <button *ngIf="newTicket" (click)="addTicket()">Add Ticket</button>
     </div>
   </form>
