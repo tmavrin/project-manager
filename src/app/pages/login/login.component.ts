@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   loginForm: FormGroup;
   invalidLogin: boolean;
 
@@ -21,16 +21,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.onLoginButton();
-  }
-
   onLoginButton() {
-    // if (this.loginForm.valid) {
-      // const email = this.loginForm.getRawValue().email;
-      // const password = this.loginForm.getRawValue().pass;
-      const email = "t@mail.com";
-      const password = "123123";
+    if (this.loginForm.valid) {
+      const email = this.loginForm.getRawValue().email;
+      const password = this.loginForm.getRawValue().pass;
       this.authService.login(email, password).then(
         successs => {
           this.invalidLogin = false;
@@ -43,8 +37,8 @@ export class LoginComponent implements OnInit {
           }, 3500);
         }
       );
-    // } else {
-    //   console.log('invalid login');
-   // }
+     } else {
+      console.log('invalid login');
+    }
   }
 }

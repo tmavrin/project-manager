@@ -22,6 +22,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CreateBoardDialogComponent } from './components/create-board-dialog/create-board-dialog.component';
 import { SelectBoardDialogComponent } from './components/select-board-dialog/select-board-dialog.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -47,14 +49,16 @@ import { SelectBoardDialogComponent } from './components/select-board-dialog/sel
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: SessionInterceptorService,
       multi: true
-    }
+    },
+    CookieService
   ],
   bootstrap: [AppComponent],
   entryComponents: [TicketDialogComponent, UserSelectionDialogComponent, CreateBoardDialogComponent]
