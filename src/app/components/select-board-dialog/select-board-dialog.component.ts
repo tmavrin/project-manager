@@ -1,10 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Board, BoardService } from 'src/app/services/board/board.service';
-import {
-    MatDialogRef,
-    MAT_DIALOG_DATA,
-    MatDialog
-} from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { CreateBoardDialogComponent } from '../create-board-dialog/create-board-dialog.component';
 
 @Component({
@@ -44,5 +40,11 @@ export class SelectBoardDialogComponent {
 
     selectBoard(selectedBoard: Board) {
         this.dialogRef.close(selectedBoard.id);
+    }
+
+    deleteBoard(selectedBoard: Board) {
+        this.boardService.deleteBoard(selectedBoard.id).then(() => {
+            this.getBoards();
+        });
     }
 }

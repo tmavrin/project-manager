@@ -1,14 +1,17 @@
 <div class="board-selection-box">
-    <div
-        *ngFor="let board of boards"
-        class="board-item"
-        (click)="selectBoard(board)"
-    >
-        <img src="assets/ticket/user.svg" />
-        <p>{{ board.name }}</p>
+    <div *ngFor="let board of boards" class="board-item">
+        <div class="board-item-inner" (click)="selectBoard(board)">
+            <img src="assets/home/table.svg" />
+            <p>{{ board?.name }}</p>
+        </div>
+        <div class="board-delete" (click)="deleteBoard(board)">
+            <img src="assets/home/delete.svg" />
+        </div>
     </div>
     <div class="board-item create" (click)="openCreateBoardDialog()">
-        <img src="assets/column/add.svg" />
-        <p>Create New</p>
+        <div class="board-item-inner">
+            <img src="assets/column/add.svg" />
+            <p>Create New</p>
+        </div>
     </div>
 </div>

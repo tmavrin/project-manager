@@ -5,12 +5,33 @@
 
     .board-item {
         margin: 7px 0;
-        padding: 5px 15px;
+        padding: 0;
         background: #c4c4c4;
-        display: flex;
-        justify-content: space-between;
         border-radius: 4px;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        display: flex;
+        justify-content: space-between;
+        .board-item-inner {
+            padding: 5px 15px;
+            width: 80%;
+            display: flex;
+            justify-content: space-between;
+        }
+        .board-delete {
+            display: flex;
+            justify-content: center;
+            background: #e32249;
+            width: 0;
+            overflow: hidden;
+            transition: width 0.3s ease;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+        }
+    }
+    .board-item:hover {
+        .board-delete {
+            width: 35px;
+        }
     }
 
     .board-item.create {

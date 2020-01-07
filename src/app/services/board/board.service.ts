@@ -9,10 +9,7 @@ import { Ticket, TicketService } from './ticket.service';
     providedIn: 'root'
 })
 export class BoardService {
-    constructor(
-        private http: HttpClient,
-        private ticketService: TicketService
-    ) {}
+    constructor(private http: HttpClient, private ticketService: TicketService) {}
     public getAllUserBoards(): Promise<Board[]> {
         return new Promise<Board[]>((resolve, reject) => {
             this.http
@@ -58,6 +55,17 @@ export class BoardService {
                 })
                 .catch(error => {
                     console.error(error);
+                });
+        });
+    }
+
+    deleteBoard(boardId: string) {
+        return new Promise((resolve, reject) => {
+            this.http
+                .post(serverConfig.apiAddress + '/board/delete?boardId=' + boardId, {})
+                .toPromise()
+                .then(result => {
+                    resolve();
                 });
         });
     }
