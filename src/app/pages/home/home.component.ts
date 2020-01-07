@@ -25,45 +25,22 @@ export class HomeComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.getBoards();
+        this.openSelectBoardDialog();
     }
 
-    openCreateBoardDialog() {
-        const dialogRef = this.dialog.open(CreateBoardDialogComponent, {
-            autoFocus: true
-        });
-
-        dialogRef.afterClosed().subscribe(result => {
-            this.getBoards();
-        });
-    }
-
-    getBoards() {
-        this.boardService.getAllUserBoards().then((boards: Board[]) => {
-            if (boards.length === 0) {
-                this.openCreateBoardDialog();
-            } else if (boards.length === 1) {
-                this.getBoard(boards[0].id);
-            } else {
-                this.selectBoard();
-            }
-        });
-    }
-
-    selectBoard() {
+    openSelectBoardDialog() {
         const dialogRef = this.dialog.open(SelectBoardDialogComponent, {
             autoFocus: false
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            this.getBoard(result.boardId);
+            this.getBoard(result);
         });
     }
 
     getBoard(boardId: string) {
         this.boardService.getBoard(boardId).then((board: Board) => {
             this.board = board;
-            console.log(board);
         });
     }
 

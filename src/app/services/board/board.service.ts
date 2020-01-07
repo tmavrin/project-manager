@@ -51,7 +51,7 @@ export class BoardService {
                 .toPromise()
                 .then((data: any) => {
                     if (data.status === 'failure') {
-                        reject();
+                        reject(data);
                     } else {
                         resolve();
                     }

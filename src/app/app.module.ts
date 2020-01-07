@@ -64,7 +64,8 @@ import { CookieService } from 'ngx-cookie-service';
     entryComponents: [
         TicketDialogComponent,
         UserSelectionDialogComponent,
-        CreateBoardDialogComponent
+        CreateBoardDialogComponent,
+        SelectBoardDialogComponent
     ]
 })
 export class AppModule {}

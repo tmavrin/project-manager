@@ -1,4 +1,14 @@
-<div class="create-board-box">
-    <h2>Create a board.</h2>
-    <form></form>
+<div class="board-selection-box">
+    <div
+        *ngFor="let board of boards"
+        class="board-item"
+        (click)="selectBoard(board)"
+    >
+        <img src="assets/ticket/user.svg" />
+        <p>{{ board.name }}</p>
+    </div>
+    <div class="board-item create" (click)="openCreateBoardDialog()">
+        <img src="assets/column/add.svg" />
+        <p>Create New</p>
+    </div>
 </div>

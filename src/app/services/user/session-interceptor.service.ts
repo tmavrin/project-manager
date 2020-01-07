@@ -25,7 +25,6 @@ export class SessionInterceptorService implements HttpInterceptor {
     ): Observable<HttpEvent<any>> {
         const authHeaders = this.authService.getAuthHeaders();
         request = request.clone({ headers: new HttpHeaders(authHeaders) });
-        console.log(request);
         return next.handle(request);
     }
 }

@@ -17,7 +17,7 @@ export class CreateBoardDialogComponent implements OnInit {
     boardForm: FormGroup;
 
     constructor(
-        public dialogRef: MatDialogRef<TicketDialogComponent>,
+        public dialogRef: MatDialogRef<CreateBoardDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any,
         private boardService: BoardService,
         private formBuilder: FormBuilder
@@ -37,8 +37,11 @@ export class CreateBoardDialogComponent implements OnInit {
     createBoard() {
         const title = this.boardForm.getRawValue().title;
         const description = this.boardForm.getRawValue().description;
-        this.boardService.createBoard(title, description).then(data => {
-            this.close();
-        });
+        this.boardService
+            .createBoard(title, description)
+            .then(data => {
+                this.close();
+            })
+            .catch(error => console.log(error));
     }
 }
