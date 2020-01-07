@@ -4,6 +4,6 @@
     <img (click)="addTicket()" src="assets/column/add.svg">
   </div>
   <div class="column-tickets">
-    <app-ticket cdkDrag *ngFor="let ticket of column?.tickets" [ticket]="ticket" (deleteTicket)="deleteTicket()"></app-ticket>
+    <app-ticket cdkDrag *ngFor="let ticket of column?.tickets" [ticket]="ticket" (deleteTicket)="deleteTicket($event)"></app-ticket>
   </div>
 </div>
