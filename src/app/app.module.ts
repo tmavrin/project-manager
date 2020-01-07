@@ -26,41 +26,45 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    HomeComponent,
-    ColumnComponent,
-    TicketComponent,
-    TicketDialogComponent,
-    UserSelectionDialogComponent,
-    RegisterComponent,
-    CreateBoardDialogComponent,
-    SelectBoardDialogComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    FormsModule,
-    DragDropModule,
-    MatDialogModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatSnackBarModule,
-    MatProgressSpinnerModule,
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: SessionInterceptorService,
-      multi: true
-    },
-    CookieService
-  ],
-  bootstrap: [AppComponent],
-  entryComponents: [TicketDialogComponent, UserSelectionDialogComponent, CreateBoardDialogComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        HomeComponent,
+        ColumnComponent,
+        TicketComponent,
+        TicketDialogComponent,
+        UserSelectionDialogComponent,
+        RegisterComponent,
+        CreateBoardDialogComponent,
+        SelectBoardDialogComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        FormsModule,
+        DragDropModule,
+        MatDialogModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        MatSnackBarModule,
+        MatProgressSpinnerModule
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: SessionInterceptorService,
+            multi: true
+        },
+        CookieService
+    ],
+    bootstrap: [AppComponent],
+    entryComponents: [
+        TicketDialogComponent,
+        UserSelectionDialogComponent,
+        CreateBoardDialogComponent
+    ]
 })
 export class AppModule {}

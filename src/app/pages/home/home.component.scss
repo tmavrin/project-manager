@@ -1,53 +1,52 @@
 .home-page {
-  width: 100%;
-  height: 100%;
-  background: #ECECEC;
+    width: 100%;
+    height: 100%;
+    background: #ececec;
 }
 
 .home-footer {
-  width: 100%;
-  height: 70px;
-  display: flex;
-  justify-content: space-between;
-  background: #C4C4C4;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-  .project-links,
-  .project-title,
-  .project-settings {
+    width: 100%;
+    height: 70px;
     display: flex;
-    justify-content: center;
-  }
+    justify-content: space-between;
+    background: #c4c4c4;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
-  img {
-    margin: 15px;
-  }
+    .project-links,
+    .project-title,
+    .project-settings {
+        display: flex;
+        justify-content: center;
+    }
 
-  .project-links {
-    margin-left: 1%;
-  }
+    img {
+        margin: 15px;
+    }
 
-  .project-title {
-    margin-right: 10%;
-    color: #434343;
+    .project-links {
+        margin-left: 1%;
+    }
 
-  }
+    .project-title {
+        margin-right: 10%;
+        color: #434343;
+    }
 
-  .project-settings {
-    margin-right: 1%;
-  }
+    .project-settings {
+        margin-right: 1%;
+    }
 }
 
 .home-board {
-  background: white;
-  width: 96%;
-  height: 86%;
-  margin: 1.5% auto 0 auto;
-  display: flex;
-  padding: 7px;
-
-  app-column {
+    background: white;
+    width: 96%;
+    height: 86%;
+    margin: 1.5% auto 0 auto;
+    display: flex;
     padding: 7px;
-    flex: 1;
-  }
+
+    app-column {
+        padding: 7px;
+        flex: 1;
+    }
 }

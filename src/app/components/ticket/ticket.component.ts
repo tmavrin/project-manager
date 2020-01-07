@@ -5,31 +5,31 @@ import { MatDialog } from '@angular/material/dialog';
 import { TicketDialogComponent } from '../ticket-dialog/ticket-dialog.component';
 
 @Component({
-  selector: 'app-ticket',
-  templateUrl: './ticket.component.html',
-  styleUrls: ['./ticket.component.scss']
+    selector: 'app-ticket',
+    templateUrl: './ticket.component.html',
+    styleUrls: ['./ticket.component.scss']
 })
 export class TicketComponent implements OnInit {
-  @Input('ticket') ticket: Ticket;
-  @Output() deleteTicket = new EventEmitter<Ticket>();
+    @Input('ticket') ticket: Ticket;
+    @Output() deleteTicket = new EventEmitter<Ticket>();
 
-  constructor(private dialog: MatDialog) {}
+    constructor(private dialog: MatDialog) {}
 
-  ngOnInit() {}
+    ngOnInit() {}
 
-  editTicket() {
-    const dialogRef = this.dialog.open(TicketDialogComponent, {
-      data: {
-        newTicket: false,
-        ticket: this.ticket
-      },
-      autoFocus: false
-    });
+    editTicket() {
+        const dialogRef = this.dialog.open(TicketDialogComponent, {
+            data: {
+                newTicket: false,
+                ticket: this.ticket
+            },
+            autoFocus: false
+        });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result.result === -1) {
-        this.deleteTicket.emit(this.ticket);
-      }
-    });
-  }
+        dialogRef.afterClosed().subscribe(result => {
+            if (result.result === -1) {
+                this.deleteTicket.emit(this.ticket);
+            }
+        });
+    }
 }

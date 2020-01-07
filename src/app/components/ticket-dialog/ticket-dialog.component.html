@@ -1,73 +1,76 @@
 <div class="dialog-box">
-  <form [formGroup]="ticketForm">
-    <input
-      formControlName="title"
-      [ngClass]="{ 'new-ticket-mode': newTicket }"
-      autocomplete="off"
-      type="text"
-      id="ticket-title"
-      placeholder="Ticket Title"
-      value="{{ ticket?.title }}"
-    />
-    <input
-      [ngClass]="{ 'new-ticket-mode': newTicket }"
-      autocomplete="off"
-      type="text"
-      id="ticket-subtitle"
-      placeholder="Subtitle or subcategory of the ticket"
-      value="{{ ticket?.subtitle }}"
-    />
-
-    <div class="description-box">
-      <p>Description</p>
-      <textarea
-        formControlName="description"
-        placeholder="Write some description about this ticket"
-        type="text"
-        id="ticket-desc"
-        value="{{ ticket?.description }}"
-      ></textarea>
-    </div>
-
-    <div class="other-options">
-      <div
-        *ngIf="!ticket?.assigned"
-        class="ticket-assigned"
-        (click)="assignUser()"
-      >
-        <p>Assigned User</p>
-        <img src="assets/ticket/add-new.svg" />
-      </div>
-      <div
-        *ngIf="ticket?.assigned"
-        class="ticket-assigned"
-        (click)="assignUser()"
-      >
-        <p>Assigned User</p>
-        <div class="a-user">
-          <img src="assets/ticket/user.svg" />
-          <p>{{ ticket?.assigned.name }}</p>
-        </div>
-      </div>
-      <div *ngIf="!ticket?.deadline" class="ticket-due-date">
+    <form [formGroup]="ticketForm">
         <input
-          matInput
-          [matDatepicker]="picker"
-          placeholder="Choose a due date"
+            formControlName="title"
+            [ngClass]="{ 'new-ticket-mode': newTicket }"
+            autocomplete="off"
+            type="text"
+            id="ticket-title"
+            placeholder="Ticket Title"
+            value="{{ ticket?.title }}"
         />
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </div>
-      <div *ngIf="ticket?.deadline" class="ticket-due-date">
-        <p>Deadline</p>
-        <p>{{ ticket.deadline | date: 'short' }}</p>
-      </div>
-    </div>
+        <input
+            [ngClass]="{ 'new-ticket-mode': newTicket }"
+            autocomplete="off"
+            type="text"
+            id="ticket-subtitle"
+            placeholder="Subtitle or subcategory of the ticket"
+            value="{{ ticket?.subtitle }}"
+        />
 
-    <div class="ticket-buttons">
-      <button (click)="close(0,undefined)">Close</button>
-      <button *ngIf="!newTicket" (click)="delete()">Delete</button>
-      <button *ngIf="newTicket" (click)="addTicket()">Add Ticket</button>
-    </div>
-  </form>
+        <div class="description-box">
+            <p>Description</p>
+            <textarea
+                formControlName="description"
+                placeholder="Write some description about this ticket"
+                type="text"
+                id="ticket-desc"
+                value="{{ ticket?.description }}"
+            ></textarea>
+        </div>
+
+        <div class="other-options">
+            <div
+                *ngIf="!ticket?.assigned"
+                class="ticket-assigned"
+                (click)="assignUser()"
+            >
+                <p>Assigned User</p>
+                <img src="assets/ticket/add-new.svg" />
+            </div>
+            <div
+                *ngIf="ticket?.assigned"
+                class="ticket-assigned"
+                (click)="assignUser()"
+            >
+                <p>Assigned User</p>
+                <div class="a-user">
+                    <img src="assets/ticket/user.svg" />
+                    <p>{{ ticket?.assigned.name }}</p>
+                </div>
+            </div>
+            <div *ngIf="!ticket?.deadline" class="ticket-due-date">
+                <input
+                    matInput
+                    [matDatepicker]="picker"
+                    placeholder="Choose a due date"
+                />
+                <mat-datepicker-toggle
+                    matSuffix
+                    [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </div>
+            <div *ngIf="ticket?.deadline" class="ticket-due-date">
+                <p>Deadline</p>
+                <p>{{ ticket.deadline | date: 'short' }}</p>
+            </div>
+        </div>
+
+        <div class="ticket-buttons">
+            <button (click)="close(0, undefined)">Close</button>
+            <button *ngIf="!newTicket" (click)="delete()">Delete</button>
+            <button *ngIf="newTicket" (click)="addTicket()">Add Ticket</button>
+        </div>
+    </form>
 </div>

@@ -7,8 +7,8 @@ import { TicketComponent } from './../../components/ticket/ticket.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
-  declarations: [ColumnComponent, TicketComponent, MatDialogModule],
-  imports: [CommonModule],
-  exports: [TicketComponent, DragDropModule, MatDialogModule]
+    declarations: [ColumnComponent, TicketComponent, MatDialogModule],
+    imports: [CommonModule],
+    exports: [TicketComponent, DragDropModule, MatDialogModule]
 })
 export class HomeModule {}
