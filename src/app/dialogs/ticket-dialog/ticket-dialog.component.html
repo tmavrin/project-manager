@@ -30,40 +30,25 @@
         </div>
 
         <div class="other-options">
-            <div
-                *ngIf="!ticket?.assigned"
-                class="ticket-assigned"
-                (click)="assignUser()"
-            >
+            <div *ngIf="!ticket?.assigned_to" class="ticket-assigned" (click)="assignUser()">
                 <p>Assigned User</p>
                 <img src="assets/ticket/add-new.svg" />
             </div>
-            <div
-                *ngIf="ticket?.assigned"
-                class="ticket-assigned"
-                (click)="assignUser()"
-            >
+            <div *ngIf="ticket?.assigned_to" class="ticket-assigned">
                 <p>Assigned User</p>
                 <div class="a-user">
                     <img src="assets/ticket/user.svg" />
-                    <p>{{ ticket?.assigned.name }}</p>
+                    <p>Mock User</p>
                 </div>
             </div>
-            <div *ngIf="!ticket?.deadline" class="ticket-due-date">
-                <input
-                    matInput
-                    [matDatepicker]="picker"
-                    placeholder="Choose a due date"
-                />
-                <mat-datepicker-toggle
-                    matSuffix
-                    [for]="picker"
-                ></mat-datepicker-toggle>
+            <div *ngIf="!ticket?.date_due" class="ticket-due-date">
+                <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Choose a due date" />
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </div>
-            <div *ngIf="ticket?.deadline" class="ticket-due-date">
+            <div *ngIf="ticket?.date_due" class="ticket-due-date">
                 <p>Deadline</p>
-                <p>{{ ticket.deadline | date: 'short' }}</p>
+                <p>{{ ticket.date_due | date: 'short' }}</p>
             </div>
         </div>
 

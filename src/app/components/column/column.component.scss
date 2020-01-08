@@ -40,6 +40,10 @@
         white-space: nowrap;
     }
 
+    img {
+        cursor: pointer;
+    }
+
     img.add {
         width: 25px;
     }
@@ -71,6 +75,7 @@ app-ticket.cdk-drag-preview {
 }
 
 app-ticket {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
 }

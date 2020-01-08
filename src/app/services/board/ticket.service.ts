@@ -32,7 +32,6 @@ export class TicketService {
     }
 
     public addTicket(ticket: Ticket): Promise<any> {
-        console.log(ticket);
         return new Promise((resolve, reject) => {
             this.http
                 .post(serverConfig.apiAddress + '/ticket/create', ticket)
@@ -72,35 +71,22 @@ export class TicketService {
     }
 
     public moveTicket(ticket: Ticket): Promise<any> {
-        return this.http
-            .post(serverConfig.apiAddress + '/ticket/move', ticket)
-            .toPromise();
+        return this.http.post(serverConfig.apiAddress + '/ticket/move', ticket).toPromise();
     }
 
     public deleteTicket(ticketId: string) {
-        return this.http
-            .post(
-                serverConfig.apiAddress + '/ticket/delete?ticketId=' + ticketId,
-                {}
-            )
-            .toPromise();
+        return this.http.post(serverConfig.apiAddress + '/ticket/delete?ticketId=' + ticketId, {}).toPromise();
     }
 }
 
 export interface Ticket {
     id?: string;
+    subtitle?: string;
     column_id: string;
     title: string;
-    subtitle?: string;
-    comments?: Comment[];
     description?: string;
-    deadline?: Date;
-    assigned?: User;
-    createdBy?: User;
-}
-
-export interface Comment {
-    authorId: string;
-    content: string;
-    timestamp: Date;
+    color: string;
+    date_due?: Date;
+    assigned_to?: string;
+    createdBy?: string;
 }

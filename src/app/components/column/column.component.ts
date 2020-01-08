@@ -42,9 +42,10 @@ export class ColumnComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe((resultTicket: { result; ticket }) => {
-            console.log(resultTicket);
-            if (resultTicket.result === 1) {
-                this.column.tickets.push(resultTicket.ticket);
+            if (resultTicket) {
+                if (resultTicket.result === 1) {
+                    this.column.tickets.push(resultTicket.ticket);
+                }
             }
         });
     }

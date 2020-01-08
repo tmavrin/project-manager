@@ -29,7 +29,8 @@ export class TicketDialogComponent {
 
         this.ticketForm = this.formBuilder.group({
             title: ['', Validators.required],
-            description: ['']
+            description: [''],
+            date: ['']
         });
     }
 
@@ -39,11 +40,12 @@ export class TicketDialogComponent {
 
     addTicket() {
         const t: Ticket = {
+            color: '#321321',
             title: this.ticketForm.getRawValue().title,
             description: this.ticketForm.getRawValue().description,
-            column_id: this.columnId
+            column_id: this.columnId,
+            date_due: new Date(this.ticketForm.getRawValue().date)
         };
-
         this.ticketService.addTicket(t).then(res => {
             this.close(1, res);
         });
