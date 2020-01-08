@@ -20,7 +20,7 @@
 
     <div class="home-board" cdkDropListGroup>
         <app-column *ngFor="let column of board?.columnList" [column]="column"></app-column>
-        <div class="column-create">
+        <div class="column-create" (click)="createColumnDialog()">
             <img src="assets/column/add-black.svg" />
         </div>
     </div>

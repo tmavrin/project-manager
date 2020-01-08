@@ -56,14 +56,14 @@
         width: 10px;
         overflow: hidden;
         transition: width 0.3s ease;
-        transition: background 0.3 ease;
         display: flex;
         justify-content: center;
         align-items: center;
+        border-radius: 4px;
     }
 
     .column-create:hover {
         width: 40px;
-        background: #434343;
+        background-color: #434343;
     }
 }

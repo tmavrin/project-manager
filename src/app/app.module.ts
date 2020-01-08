@@ -63,6 +63,6 @@ import { CreateColumnDialogComponent } from './dialogs/create-column-dialog/crea
         CookieService
     ],
     bootstrap: [AppComponent],
-    entryComponents: [TicketDialogComponent, UserSelectionDialogComponent, CreateBoardDialogComponent, SelectBoardDialogComponent]
+    entryComponents: [TicketDialogComponent, UserSelectionDialogComponent, CreateBoardDialogComponent, SelectBoardDialogComponent, CreateColumnDialogComponent]
 })
 export class AppModule {}

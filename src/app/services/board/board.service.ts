@@ -69,12 +69,29 @@ export class BoardService {
                 });
         });
     }
+
+    createColumn(column: Column) {
+        return new Promise((resolve, reject) => {
+            this.http
+                .post(serverConfig.apiAddress + '/column/create', column)
+                .toPromise()
+                .then((response: Column) => {
+                    response.tickets = [];
+                    resolve(response);
+                })
+                .catch(err => {
+                    console.error(err);
+                    reject(err);
+                });
+        });
+    }
 }
 
 export interface Column {
-    id: string;
+    id?: string;
     name: string;
-    tickets: Ticket[];
+    tickets?: Ticket[];
+    board_id: string;
 }
 
 export interface Board {

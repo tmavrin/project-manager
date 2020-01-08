@@ -54,3 +54,10 @@ input:focus {
         resize: none;
     }
 }
+
+.ticket-buttons {
+    margin-top: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

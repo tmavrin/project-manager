@@ -1,1 +1,10 @@
-<p>create-column-dialog works!</p>
+<div class="create-column-box">
+    <h2>Create a column.</h2>
+    <form [formGroup]="columnForm">
+        <input formControlName="title" autocomplete="off" type="text" id="column-title" placeholder="Column Title" />
+        <div class="ticket-buttons">
+            <button (click)="close()">Close</button>
+            <button (click)="createColumn()">Create Column</button>
+        </div>
+    </form>
+</div>

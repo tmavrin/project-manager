@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CreateBoardDialogComponent } from 'src/app/dialogs/create-board-dialog/create-board-dialog.component';
 import { SelectBoardDialogComponent } from 'src/app/dialogs/select-board-dialog/select-board-dialog.component';
 import { AuthService } from 'src/app/services/user/auth.service';
+import { CreateColumnDialogComponent } from 'src/app/dialogs/create-column-dialog/create-column-dialog.component';
 
 @Component({
     selector: 'app-home',
@@ -38,5 +39,16 @@ export class HomeComponent implements OnInit {
 
     logOut() {
         this.auth.logOut();
+    }
+
+    createColumnDialog() {
+        const dialogRef = this.dialog.open(CreateColumnDialogComponent, {
+            autoFocus: true,
+            data: { boardId: this.board.id }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            this.board.columnList.push(result);
+        });
     }
 }
