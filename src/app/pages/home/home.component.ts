@@ -15,6 +15,8 @@ import { CreateColumnDialogComponent } from 'src/app/dialogs/create-column-dialo
 export class HomeComponent implements OnInit {
     board: Board;
 
+    editMode = false;
+
     constructor(private auth: AuthService, private boardService: BoardService, private dialog: MatDialog) {}
 
     ngOnInit() {
@@ -48,7 +50,18 @@ export class HomeComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            this.board.columnList.push(result);
+            if (result) {
+                this.board.columnList.push(result);
+            }
         });
+    }
+
+    editColumns() {
+        this.editMode = !this.editMode;
+    }
+
+    deleteColumn(delColumn: Column) {
+        const index = this.board.columnList.indexOf(delColumn);
+        this.board.columnList.splice(index, 1);
     }
 }

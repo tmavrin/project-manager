@@ -85,6 +85,20 @@ export class BoardService {
                 });
         });
     }
+
+    deleteColumn(column: Column) {
+        return new Promise((resolve, reject) => {
+            this.http
+                .post(serverConfig.apiAddress + '/column/delete?columnId=' + column.id, {})
+                .toPromise()
+                .then(() => {
+                    resolve();
+                })
+                .catch(err => {
+                    console.error(err);
+                });
+        });
+    }
 }
 
 export interface Column {

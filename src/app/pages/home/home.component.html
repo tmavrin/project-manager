@@ -13,13 +13,13 @@
 
         <div class="project-settings">
             <img src="assets/home/notification.svg" />
-            <img src="assets/home/profile.svg" />
-            <img src="assets/home/settings.svg" (click)="logOut()" />
+            <img src="assets/home/profile.svg" (click)="logOut()" />
+            <img src="assets/home/settings.svg" (click)="editColumns()" />
         </div>
     </div>
 
     <div class="home-board" cdkDropListGroup>
-        <app-column *ngFor="let column of board?.columnList" [column]="column"></app-column>
+        <app-column *ngFor="let column of board?.columnList" [column]="column" [edit]="editMode" (delete)="deleteColumn($event)"></app-column>
         <div class="column-create" (click)="createColumnDialog()">
             <img src="assets/column/add-black.svg" />
         </div>

@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
-import { Column } from './../../services/board/board.service';
+import { Column, BoardService } from './../../services/board/board.service';
 import { TicketService, Ticket } from './../../services/board/ticket.service';
 import { MatDialog } from '@angular/material/dialog';
 import { TicketDialogComponent } from '../../dialogs/ticket-dialog/ticket-dialog.component';
@@ -13,8 +13,10 @@ import { TicketDialogComponent } from '../../dialogs/ticket-dialog/ticket-dialog
 })
 export class ColumnComponent implements OnInit {
     @Input('column') column: Column;
+    @Input('edit') edit: boolean;
+    @Output() delete = new EventEmitter<Column>();
 
-    constructor(private ticketService: TicketService, private dialog: MatDialog) {}
+    constructor(private ticketService: TicketService, private dialog: MatDialog, private boardService: BoardService) {}
 
     ngOnInit() {}
 
@@ -50,5 +52,11 @@ export class ColumnComponent implements OnInit {
     deleteTicket(delTicket: Ticket) {
         const index = this.column.tickets.indexOf(delTicket);
         this.column.tickets.splice(index, 1);
+    }
+
+    deleteColumn() {
+        this.boardService.deleteColumn(this.column).then(() => {
+            this.delete.emit(this.column);
+        });
     }
 }

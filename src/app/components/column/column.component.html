@@ -1,19 +1,10 @@
-<div
-    class="column-comp"
-    cdkDropList
-    [cdkDropListData]="column?.tickets"
-    (cdkDropListDropped)="drop($event)"
->
+<div class="column-comp" cdkDropList [cdkDropListData]="column?.tickets" (cdkDropListDropped)="drop($event)">
     <div class="column-title">
         <p>{{ column?.name }}</p>
-        <img (click)="addTicket()" src="assets/column/add.svg" />
+        <img class="add" *ngIf="!edit" (click)="addTicket()" src="assets/column/add.svg" />
+        <img class="delete" *ngIf="edit" (click)="deleteColumn()" src="assets/column/delete-white.svg" />
     </div>
     <div class="column-tickets">
-        <app-ticket
-            cdkDrag
-            *ngFor="let ticket of column?.tickets"
-            [ticket]="ticket"
-            (deleteTicket)="deleteTicket($event)"
-        ></app-ticket>
+        <app-ticket cdkDrag *ngFor="let ticket of column?.tickets" [ticket]="ticket" (deleteTicket)="deleteTicket($event)"></app-ticket>
     </div>
 </div>

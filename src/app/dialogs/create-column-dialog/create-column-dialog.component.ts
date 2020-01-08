@@ -34,4 +34,8 @@ export class CreateColumnDialogComponent implements OnInit {
             this.dialogRef.close(result);
         });
     }
+
+    close() {
+        this.dialogRef.close();
+    }
 }
