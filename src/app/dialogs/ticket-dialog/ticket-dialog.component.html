@@ -1,4 +1,4 @@
-<div class="dialog-box">
+<div class="dialog-box" [ngStyle]="{ 'background-color': selectedColor }">
     <form [formGroup]="ticketForm">
         <input
             formControlName="title"
@@ -10,6 +10,7 @@
             value="{{ ticket?.title }}"
         />
         <input
+            formControlName="subtitle"
             [ngClass]="{ 'new-ticket-mode': newTicket }"
             autocomplete="off"
             type="text"
@@ -27,6 +28,17 @@
                 id="ticket-desc"
                 value="{{ ticket?.description }}"
             ></textarea>
+        </div>
+
+        <div class="color-selection">
+            <mat-form-field>
+                <mat-label>Color</mat-label>
+                <mat-select [(value)]="selectedColor">
+                    <mat-option *ngFor="let color of colors" [value]="color.value" [ngStyle]="{ 'background-color': color.value }">
+                        {{ color.text }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
 
         <div class="other-options">

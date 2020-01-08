@@ -10,6 +10,19 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
     styleUrls: ['./ticket-dialog.component.scss']
 })
 export class TicketDialogComponent {
+    colors: Color[] = [
+        { value: '#C4C4C4', text: 'Grey' },
+        { value: '#EE8282', text: 'Red' },
+        { value: '#D3C64E', text: 'Yellow' },
+        { value: '#59C05D', text: 'Green' },
+        { value: '#49E9D5', text: 'Light Blue' },
+        { value: '#71A1EA', text: 'Dark Blue' },
+        { value: '#E9BEF3', text: 'Pink' },
+        { value: '#C295FD', text: 'Purple' }
+    ];
+
+    selectedColor = '#C4C4C4';
+
     newTicket = false;
     ticket: Ticket;
 
@@ -30,6 +43,7 @@ export class TicketDialogComponent {
         this.ticketForm = this.formBuilder.group({
             title: ['', Validators.required],
             description: [''],
+            subtitle: [''],
             date: ['']
         });
     }
@@ -40,8 +54,9 @@ export class TicketDialogComponent {
 
     addTicket() {
         const t: Ticket = {
-            color: '#321321',
+            color: this.selectedColor,
             title: this.ticketForm.getRawValue().title,
+            subtitle: this.ticketForm.getRawValue().subtitle,
             description: this.ticketForm.getRawValue().description,
             column_id: this.columnId,
             date_due: new Date(this.ticketForm.getRawValue().date)
@@ -69,4 +84,9 @@ export class TicketDialogComponent {
             }
         });
     }
+}
+
+export interface Color {
+    value: string;
+    text: string;
 }

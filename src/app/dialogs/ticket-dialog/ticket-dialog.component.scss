@@ -1,9 +1,10 @@
 .dialog-box {
     width: 630px;
-    height: 400px;
+    height: 480px;
     background: #c4c4c4;
     padding: 30px;
     overflow: hidden;
+    transition: background-color 1s ease;
 
     form {
         display: flex;
@@ -41,6 +42,14 @@
                 padding: 10px;
                 height: 75px;
                 resize: none;
+            }
+        }
+
+        .color-selection {
+            width: 620px;
+            margin: 5px 0;
+            mat-form-field {
+                width: 100%;
             }
         }
 
