@@ -1,11 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { BoardService } from 'src/app/services/board/board.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {
-    MatDialogRef,
-    MAT_DIALOG_DATA,
-    MatDialog
-} from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { TicketDialogComponent } from '../ticket-dialog/ticket-dialog.component';
 
 @Component({

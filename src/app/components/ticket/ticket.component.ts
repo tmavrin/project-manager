@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Ticket } from './../../services/board/ticket.service';
 import { MatDialog } from '@angular/material/dialog';
-import { TicketDialogComponent } from '../ticket-dialog/ticket-dialog.component';
+import { TicketDialogComponent } from '../../dialogs/ticket-dialog/ticket-dialog.component';
 
 @Component({
     selector: 'app-ticket',

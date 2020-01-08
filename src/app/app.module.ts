@@ -14,16 +14,17 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SessionInterceptorService } from './services/user/session-interceptor.service';
 import { MatDialogModule } from '@angular/material/dialog';
-import { TicketDialogComponent } from './components/ticket-dialog/ticket-dialog.component';
+import { TicketDialogComponent } from './dialogs/ticket-dialog/ticket-dialog.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
-import { UserSelectionDialogComponent } from './components/user-selection-dialog/user-selection-dialog.component';
+import { UserSelectionDialogComponent } from './dialogs/user-selection-dialog/user-selection-dialog.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { CreateBoardDialogComponent } from './components/create-board-dialog/create-board-dialog.component';
-import { SelectBoardDialogComponent } from './components/select-board-dialog/select-board-dialog.component';
+import { CreateBoardDialogComponent } from './dialogs/create-board-dialog/create-board-dialog.component';
+import { SelectBoardDialogComponent } from './dialogs/select-board-dialog/select-board-dialog.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { CookieService } from 'ngx-cookie-service';
+import { CreateColumnDialogComponent } from './dialogs/create-column-dialog/create-column-dialog.component';
 
 @NgModule({
     declarations: [
@@ -36,7 +37,8 @@ import { CookieService } from 'ngx-cookie-service';
         UserSelectionDialogComponent,
         RegisterComponent,
         CreateBoardDialogComponent,
-        SelectBoardDialogComponent
+        SelectBoardDialogComponent,
+        CreateColumnDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -61,11 +63,6 @@ import { CookieService } from 'ngx-cookie-service';
         CookieService
     ],
     bootstrap: [AppComponent],
-    entryComponents: [
-        TicketDialogComponent,
-        UserSelectionDialogComponent,
-        CreateBoardDialogComponent,
-        SelectBoardDialogComponent
-    ]
+    entryComponents: [TicketDialogComponent, UserSelectionDialogComponent, CreateBoardDialogComponent, SelectBoardDialogComponent]
 })
 export class AppModule {}

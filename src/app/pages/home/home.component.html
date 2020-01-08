@@ -8,7 +8,6 @@
         </div>
 
         <div class="project-title" (click)="openSelectBoardDialog()">
-            <img src="assets/home/edit.svg" />
             <h2>{{ this.board?.name }}</h2>
         </div>
 
@@ -20,7 +19,9 @@
     </div>
 
     <div class="home-board" cdkDropListGroup>
-        <app-column *ngFor="let column of board?.columnList" [column]="column">
-        </app-column>
+        <app-column *ngFor="let column of board?.columnList" [column]="column"></app-column>
+        <div class="column-create">
+            <img src="assets/column/add-black.svg" />
+        </div>
     </div>
 </div>

@@ -1,9 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import {
-    MAT_DIALOG_DATA,
-    MatDialogRef,
-    MatDialog
-} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { TicketService, Ticket } from 'src/app/services/board/ticket.service';
 import { UserSelectionDialogComponent } from '../user-selection-dialog/user-selection-dialog.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';

@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import {
-    Board,
-    BoardService,
-    Column
-} from './../../services/board/board.service';
+import { Board, BoardService, Column } from './../../services/board/board.service';
 import { MatDialog } from '@angular/material/dialog';
-import { CreateBoardDialogComponent } from 'src/app/components/create-board-dialog/create-board-dialog.component';
-import { SelectBoardDialogComponent } from 'src/app/components/select-board-dialog/select-board-dialog.component';
+import { CreateBoardDialogComponent } from 'src/app/dialogs/create-board-dialog/create-board-dialog.component';
+import { SelectBoardDialogComponent } from 'src/app/dialogs/select-board-dialog/select-board-dialog.component';
 import { AuthService } from 'src/app/services/user/auth.service';
 
 @Component({
@@ -18,11 +14,7 @@ import { AuthService } from 'src/app/services/user/auth.service';
 export class HomeComponent implements OnInit {
     board: Board;
 
-    constructor(
-        private auth: AuthService,
-        private boardService: BoardService,
-        private dialog: MatDialog
-    ) {}
+    constructor(private auth: AuthService, private boardService: BoardService, private dialog: MatDialog) {}
 
     ngOnInit() {
         this.openSelectBoardDialog();

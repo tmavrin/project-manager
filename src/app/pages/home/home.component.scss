@@ -28,7 +28,6 @@
     }
 
     .project-title {
-        margin-right: 10%;
         color: #434343;
     }
 
@@ -48,5 +47,23 @@
     app-column {
         padding: 7px;
         flex: 1;
+    }
+
+    .column-create {
+        background-color: #ececec;
+        height: 99%;
+        margin: 7px 3px;
+        width: 10px;
+        overflow: hidden;
+        transition: width 0.3s ease;
+        transition: background 0.3 ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .column-create:hover {
+        width: 40px;
+        background: #434343;
     }
 }
