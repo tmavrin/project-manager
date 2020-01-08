@@ -1,11 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import {
-    HttpClient,
-    HttpHeaders,
-    HttpErrorResponse,
-    HttpResponse,
-    HttpEventType
-} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse, HttpResponse, HttpEventType } from '@angular/common/http';
 
 import { serverConfig } from './../../config';
 import { BehaviorSubject } from 'rxjs';
@@ -18,14 +12,13 @@ export class AuthService {
     private authHeaders;
     public isAuthenticated = new BehaviorSubject<boolean>(false);
 
-    constructor(
-        private http: HttpClient,
-        private cookieService: CookieService
-    ) {
+    constructor(private http: HttpClient, private cookieService: CookieService) {
         const headers = this.cookieService.get('authHeaders');
         if (headers) {
-            this.authHeaders = JSON.parse(headers);
-            this.isAuthenticated.next(true);
+            const loginInfo = JSON.parse(headers);
+            setTimeout(() => {
+                this.login(loginInfo.email, loginInfo.password);
+            }, 100);
         }
     }
 
@@ -39,7 +32,7 @@ export class AuthService {
             Authorization: 'Basic ' + btoa(email + ':' + password)
         };
 
-        this.cookieService.set('authHeaders', JSON.stringify(this.authHeaders));
+        this.cookieService.set('authHeaders', JSON.stringify({ email, password }));
 
         return new Promise((resolve, reject) => {
             this.http
@@ -49,9 +42,7 @@ export class AuthService {
                     (data: any) => {
                         if (data.status === 'failure') {
                             this.isAuthenticated.next(false);
-                            reject(
-                                'Invalid login info. No user with credentials found'
-                            );
+                            reject('Invalid login info. No user with credentials found');
                         } else {
                             this.isAuthenticated.next(true);
                             resolve(data.response);
@@ -59,17 +50,14 @@ export class AuthService {
                     },
                     (error: HttpErrorResponse) => {
                         this.isAuthenticated.next(false);
+                        this.authHeaders = {};
                         reject(error);
                     }
                 );
         });
     }
 
-    public register(
-        email: string,
-        password: string,
-        name: string
-    ): Promise<any> {
+    public register(email: string, password: string, name: string): Promise<any> {
         return new Promise((resolve, reject) => {
             this.http
                 .post(serverConfig.apiAddress + '/register', {
