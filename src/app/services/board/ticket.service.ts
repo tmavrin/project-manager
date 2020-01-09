@@ -20,7 +20,7 @@ export class TicketService {
                         resolve(response);
                     },
                     error => {
-                        console.log(error);
+                        console.error(error);
                         reject(error);
                     }
                 );
@@ -32,7 +32,6 @@ export class TicketService {
     }
 
     public addTicket(ticket: Ticket): Promise<any> {
-        console.log(ticket);
         return new Promise((resolve, reject) => {
             this.http
                 .post(serverConfig.apiAddress + '/ticket/create', ticket)

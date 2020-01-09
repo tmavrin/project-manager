@@ -31,7 +31,7 @@ export class BoardService {
                         resolve(response as Board);
                     },
                     error => {
-                        console.log(error);
+                        console.error(error);
                         reject(error);
                     }
                 );

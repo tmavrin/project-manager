@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit {
     getBoard(boardId: string) {
         this.boardService.getBoard(boardId).then((board: Board) => {
             this.board = board;
-            console.log(board);
         });
     }
 

@@ -69,7 +69,6 @@ export class AuthService {
                 .toPromise()
                 .then(
                     (data: any) => {
-                        console.log(data);
                         if (data.status === 'failure') {
                             reject('User aleready exists!');
                         } else {
@@ -77,7 +76,7 @@ export class AuthService {
                         }
                     },
                     (error: HttpErrorResponse) => {
-                        console.log(error);
+                        console.error(error);
                         reject(error);
                     }
                 );

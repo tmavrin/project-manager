@@ -71,7 +71,6 @@ export class TicketDialogComponent {
             date_due: new Date(this.ticketForm.getRawValue().date),
             assigned_to: this.assignedUser
         };
-        console.log(t);
         this.ticketService.addTicket(t).then(res => {
             this.close(1, res);
         });
@@ -93,9 +92,7 @@ export class TicketDialogComponent {
 
     getAssignedUser(id: string) {
         this.ticketService.getAssignedUser(id).then((user: User) => {
-            console.log(user);
             this.assignedUserName = user.name;
-            console.log(this.assignedUserName);
         });
     }
 

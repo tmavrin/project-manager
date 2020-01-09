@@ -38,6 +38,6 @@ export class CreateBoardDialogComponent implements OnInit {
             .then(data => {
                 this.close();
             })
-            .catch(error => console.log(error));
+            .catch(error => console.error(error));
     }
 }
