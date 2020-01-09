@@ -79,20 +79,24 @@ export class TicketDialogComponent {
     assignUser() {
         const dialogRef = this.dialog.open(UserSelectionDialogComponent, {
             data: {
-                boardId: this.data.boardId
+                boardId: this.data.boardId,
+                editMode: false
             },
             autoFocus: true
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            this.assignedUser = result;
-            this.getAssignedUser(result);
+            if (result) {
+                this.assignedUser = result;
+                this.getAssignedUser(result);
+            }
         });
     }
 
     getAssignedUser(id: string) {
         this.ticketService.getAssignedUser(id).then((user: User) => {
             this.assignedUserName = user.name;
+            console.log(user);
         });
     }
 

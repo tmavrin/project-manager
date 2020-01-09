@@ -9,6 +9,7 @@ import { CookieService } from 'ngx-cookie-service';
     providedIn: 'root'
 })
 export class AuthService {
+    public userId: string;
     private authHeaders;
     public isAuthenticated = new BehaviorSubject<boolean>(false);
 
@@ -44,6 +45,7 @@ export class AuthService {
                             this.isAuthenticated.next(false);
                             reject('Invalid login info. No user with credentials found');
                         } else {
+                            this.userId = data.response.id;
                             this.isAuthenticated.next(true);
                             resolve(data.response);
                         }

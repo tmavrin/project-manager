@@ -1,0 +1,12 @@
+<div class="create-column-box">
+    <h2>Add user to the board.</h2>
+    <form [formGroup]="userForm">
+        <input formControlName="email" autocomplete="off" type="email" id="column-title" placeholder="Users Email" />
+        <p *ngIf="!this.userForm.valid && this.userForm.touched">Please enter valid email</p>
+        <p *ngIf="!requestResponse">User doesn't exists or has already been added</p>
+        <div class="ticket-buttons">
+            <button (click)="close()">Close</button>
+            <button (click)="addUser()">Add User</button>
+        </div>
+    </form>
+</div>

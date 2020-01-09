@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { User } from 'src/app/services/user/auth.service';
+import { User, AuthService } from 'src/app/services/user/auth.service';
 import { BoardService } from 'src/app/services/board/board.service';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { FormBuilder } from '@angular/forms';
 import { TicketService } from 'src/app/services/board/ticket.service';
+import { AddUserDialogComponent } from '../add-user-dialog/add-user-dialog.component';
 
 @Component({
     selector: 'app-user-selection-dialog',
@@ -12,9 +13,19 @@ import { TicketService } from 'src/app/services/board/ticket.service';
 })
 export class UserSelectionDialogComponent implements OnInit {
     users: User[];
-    constructor(public dialogRef: MatDialogRef<UserSelectionDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private boardService: BoardService) {}
+    constructor(
+        public dialogRef: MatDialogRef<UserSelectionDialogComponent>,
+        @Inject(MAT_DIALOG_DATA) public data: any,
+        public authService: AuthService,
+        private boardService: BoardService,
+        private dialog: MatDialog
+    ) {}
 
     ngOnInit() {
+        this.getBoardUsers();
+    }
+
+    private getBoardUsers() {
         this.boardService.getBoardsUsers(this.data.boardId).then((users: User[]) => {
             this.users = users;
         });
@@ -22,5 +33,23 @@ export class UserSelectionDialogComponent implements OnInit {
 
     assignUser(userId: string) {
         this.dialogRef.close(userId);
+    }
+
+    deleteUser(userId: string) {
+        this.boardService.removeUser(userId, this.data.boardId).then(() => {
+            this.getBoardUsers();
+        });
+    }
+
+    addUserDialog() {
+        const dialogRef = this.dialog.open(AddUserDialogComponent, {
+            data: {
+                boardId: this.data.boardId
+            }
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+            this.getBoardUsers();
+        });
     }
 }

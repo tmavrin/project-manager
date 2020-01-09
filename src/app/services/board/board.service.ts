@@ -103,6 +103,14 @@ export class BoardService {
     getBoardsUsers(boardId: string) {
         return this.http.post(serverConfig.apiAddress + '/board/users?boardId=' + boardId, {}).toPromise();
     }
+
+    addUserToBoard(userEmail: string, boardId: string) {
+        return this.http.post(serverConfig.apiAddress + '/board/users/add?email=' + userEmail + '&boardId=' + boardId, {}).toPromise();
+    }
+
+    removeUser(userId: string, boardId: string) {
+        return this.http.post(serverConfig.apiAddress + '/board/users/remove?userId=' + userId + '&boardId=' + boardId, {}).toPromise();
+    }
 }
 
 export interface Column {

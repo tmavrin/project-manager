@@ -25,6 +25,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { CreateColumnDialogComponent } from './dialogs/create-column-dialog/create-column-dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { AddUserDialogComponent } from './dialogs/add-user-dialog/add-user-dialog.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import { MatSelectModule } from '@angular/material/select';
         RegisterComponent,
         CreateBoardDialogComponent,
         SelectBoardDialogComponent,
-        CreateColumnDialogComponent
+        CreateColumnDialogComponent,
+        AddUserDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -65,6 +67,13 @@ import { MatSelectModule } from '@angular/material/select';
         CookieService
     ],
     bootstrap: [AppComponent],
-    entryComponents: [TicketDialogComponent, UserSelectionDialogComponent, CreateBoardDialogComponent, SelectBoardDialogComponent, CreateColumnDialogComponent]
+    entryComponents: [
+        TicketDialogComponent,
+        UserSelectionDialogComponent,
+        CreateBoardDialogComponent,
+        SelectBoardDialogComponent,
+        CreateColumnDialogComponent,
+        AddUserDialogComponent
+    ]
 })
 export class AppModule {}

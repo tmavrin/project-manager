@@ -6,6 +6,7 @@ import { CreateBoardDialogComponent } from 'src/app/dialogs/create-board-dialog/
 import { SelectBoardDialogComponent } from 'src/app/dialogs/select-board-dialog/select-board-dialog.component';
 import { AuthService } from 'src/app/services/user/auth.service';
 import { CreateColumnDialogComponent } from 'src/app/dialogs/create-column-dialog/create-column-dialog.component';
+import { UserSelectionDialogComponent } from 'src/app/dialogs/user-selection-dialog/user-selection-dialog.component';
 
 @Component({
     selector: 'app-home',
@@ -63,5 +64,16 @@ export class HomeComponent implements OnInit {
     deleteColumn(delColumn: Column) {
         const index = this.board.columnList.indexOf(delColumn);
         this.board.columnList.splice(index, 1);
+    }
+
+    editBoardInfo() {}
+
+    showBoardMembers() {
+        const dialogRef = this.dialog.open(UserSelectionDialogComponent, {
+            data: {
+                boardId: this.board.id,
+                editMode: true
+            }
+        });
     }
 }
