@@ -1,10 +1,8 @@
 <div class="home-page">
     <div class="home-footer">
         <div class="project-links">
-            <img src="assets/home/github.svg" />
-            <img src="assets/home/figma.svg" />
-            <img src="assets/home/slack.svg" />
-            <img src="assets/home/web.svg" />
+            <img src="assets/home/profile.svg" (click)="showBoardMembers()" />
+            <img src="assets/home/settings.svg" (click)="editColumns()" />
         </div>
 
         <div class="project-title" (click)="openSelectBoardDialog()">
@@ -12,10 +10,7 @@
         </div>
 
         <div class="project-settings">
-            <img src="assets/home/edit.svg" (click)="editBoardInfo()" />
-            <img src="assets/home/profile.svg" (click)="showBoardMembers()" />
             <img src="assets/home/logout.svg" (click)="logOut()" />
-            <img src="assets/home/settings.svg" (click)="editColumns()" />
         </div>
     </div>
 

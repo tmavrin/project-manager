@@ -4,7 +4,7 @@
             <img src="assets/ticket/user.svg" />
             <p>{{ user.name }} ({{ user.email }})</p>
         </div>
-        <div *ngIf="this.data.editMode && authService.userId !== user.id" class="user-delete" (click)="deleteUser(user.id)">
+        <div *ngIf="this.data.editMode && authService.userId !== user.id && this.data.owner" class="user-delete" (click)="deleteUser(user.id)">
             <img src="assets/home/delete.svg" />
         </div>
         <div *ngIf="this.data.editMode && authService.userId === user.id" class="user-delete">

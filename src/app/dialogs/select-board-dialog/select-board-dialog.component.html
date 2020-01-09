@@ -4,7 +4,7 @@
             <img src="assets/home/table.svg" />
             <p>{{ board?.name }}</p>
         </div>
-        <div class="board-delete" (click)="deleteBoard(board)">
+        <div *ngIf="board.owner_id === this.auth.userId" class="board-delete" (click)="deleteBoard(board)">
             <img src="assets/home/delete.svg" />
         </div>
     </div>

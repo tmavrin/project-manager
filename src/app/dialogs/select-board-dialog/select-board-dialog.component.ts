@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { Board, BoardService } from 'src/app/services/board/board.service';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { CreateBoardDialogComponent } from '../create-board-dialog/create-board-dialog.component';
+import { AuthService } from 'src/app/services/user/auth.service';
 
 @Component({
     selector: 'app-select-board-dialog',
@@ -15,7 +16,8 @@ export class SelectBoardDialogComponent {
         public dialogRef: MatDialogRef<SelectBoardDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any,
         private dialog: MatDialog,
-        private boardService: BoardService
+        private boardService: BoardService,
+        public auth: AuthService
     ) {
         this.dialogRef.disableClose = true;
         this.dialogRef.afterOpened().subscribe(() => {

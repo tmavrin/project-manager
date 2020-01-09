@@ -72,7 +72,8 @@ export class HomeComponent implements OnInit {
         const dialogRef = this.dialog.open(UserSelectionDialogComponent, {
             data: {
                 boardId: this.board.id,
-                editMode: true
+                editMode: true,
+                owner: this.board.owner_id === this.auth.userId
             }
         });
     }

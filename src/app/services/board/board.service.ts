@@ -123,6 +123,7 @@ export interface Column {
 export interface Board {
     id: string;
     name: string;
+    owner_id: string;
     description: string;
     columnList: Column[];
 }
