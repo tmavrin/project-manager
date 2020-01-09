@@ -71,7 +71,7 @@ export interface Ticket {
     title: string;
     description?: string;
     color: string;
-    date_due?: Date;
+    date_due?: any;
     assigned_to?: string;
     createdBy?: string;
 }

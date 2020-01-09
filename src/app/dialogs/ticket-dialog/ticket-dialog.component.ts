@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { TicketService, Ticket } from 'src/app/services/board/ticket.service';
 import { UserSelectionDialogComponent } from '../user-selection-dialog/user-selection-dialog.component';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { User } from 'src/app/services/user/auth.service';
 
 @Component({
@@ -48,13 +48,16 @@ export class TicketDialogComponent {
             this.selectedColor = this.ticket.color;
             this.getAssignedUser(this.ticket.assigned_to);
         }
-
         this.ticketForm = this.formBuilder.group({
             title: ['', Validators.required],
             description: [''],
             subtitle: [''],
             date: ['']
         });
+
+        if (!this.newTicket) {
+            this.ticketForm.disable();
+        }
     }
 
     close(result: number, returnTicket: Ticket) {
@@ -94,10 +97,12 @@ export class TicketDialogComponent {
     }
 
     getAssignedUser(id: string) {
-        this.ticketService.getAssignedUser(id).then((user: User) => {
-            this.assignedUserName = user.name;
-            console.log(user);
-        });
+        if (id) {
+            this.ticketService.getAssignedUser(id).then((user: User) => {
+                this.assignedUserName = user.name;
+                console.log(user);
+            });
+        }
     }
 
     delete() {

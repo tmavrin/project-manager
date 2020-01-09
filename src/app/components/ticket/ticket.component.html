@@ -4,7 +4,7 @@
         <p>{{ ticket?.subtitle }}</p>
     </div>
     <div class="ticket-icons">
-        <img src="assets/ticket/user.svg" />
-        <img src="assets/ticket/time.svg" />
+        <img *ngIf="ticket?.assigned_to" src="assets/ticket/user.svg" />
+        <img *ngIf="ticket?.date_due" src="assets/ticket/time.svg" />
     </div>
 </div>

@@ -42,7 +42,7 @@
         </div>
 
         <div class="other-options">
-            <div *ngIf="!ticket?.assigned_to && !assignedUserName" class="ticket-assigned" (click)="assignUser()">
+            <div *ngIf="!ticket?.assigned_to && !assignedUserName && newTicket" class="ticket-assigned" (click)="assignUser()">
                 <p>Assign User</p>
                 <img src="assets/ticket/add-new.svg" />
             </div>
@@ -53,7 +53,7 @@
                     <p>{{ assignedUserName }}</p>
                 </div>
             </div>
-            <div *ngIf="!ticket?.date_due" class="ticket-due-date">
+            <div *ngIf="!ticket?.date_due && newTicket" class="ticket-due-date">
                 <input formControlName="date" matInput [matDatepicker]="picker" placeholder="Choose a due date" />
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
