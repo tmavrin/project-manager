@@ -92,7 +92,7 @@ export class AuthService {
 }
 
 export interface User {
-    uid: string;
+    id: string;
     name: string;
     email: string;
     boardIds?: string[];

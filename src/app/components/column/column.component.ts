@@ -36,7 +36,8 @@ export class ColumnComponent implements OnInit {
         const dialogRef = this.dialog.open(TicketDialogComponent, {
             data: {
                 newTicket: true,
-                columnId: this.column.id
+                columnId: this.column.id,
+                boardId: this.column.board_id
             },
             autoFocus: true
         });

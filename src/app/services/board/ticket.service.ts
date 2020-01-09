@@ -48,27 +48,8 @@ export class TicketService {
         });
     }
 
-    public mockAssignUserToTicket(ticketId: string, userId: string) {
-        return true;
-    }
-
     public assignUserToTicket(ticketId: string, userId: string) {
-        return new Promise((resolve, reject) => {
-            this.http
-                .post(serverConfig.apiAddress + '/ticket/assignUser', {
-                    ticketId,
-                    userId
-                })
-                .toPromise()
-                .then(
-                    response => {
-                        resolve(response);
-                    },
-                    error => {
-                        reject(error);
-                    }
-                );
-        });
+        return this.http.post(serverConfig.apiAddress + '/ticket/assign?ticketId=' + ticketId + '&userId=' + userId, {}).toPromise();
     }
 
     public moveTicket(ticket: Ticket): Promise<any> {
@@ -77,6 +58,10 @@ export class TicketService {
 
     public deleteTicket(ticketId: string) {
         return this.http.post(serverConfig.apiAddress + '/ticket/delete?ticketId=' + ticketId, {}).toPromise();
+    }
+
+    public getAssignedUser(userId: string) {
+        return this.http.post(serverConfig.apiAddress + '/user/get?userId=' + userId, {}).toPromise();
     }
 }
 

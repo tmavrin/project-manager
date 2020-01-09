@@ -30,7 +30,7 @@
             ></textarea>
         </div>
 
-        <div class="color-selection">
+        <div *ngIf="!this.ticket" class="color-selection">
             <mat-form-field>
                 <mat-label>Color</mat-label>
                 <mat-select [(value)]="selectedColor">
@@ -42,15 +42,15 @@
         </div>
 
         <div class="other-options">
-            <div *ngIf="!ticket?.assigned_to" class="ticket-assigned" (click)="assignUser()">
-                <p>Assigned User</p>
+            <div *ngIf="!ticket?.assigned_to && !assignedUserName" class="ticket-assigned" (click)="assignUser()">
+                <p>Assign User</p>
                 <img src="assets/ticket/add-new.svg" />
             </div>
-            <div *ngIf="ticket?.assigned_to" class="ticket-assigned">
+            <div *ngIf="ticket?.assigned_to || assignedUserName" class="ticket-assigned">
                 <p>Assigned User</p>
                 <div class="a-user">
                     <img src="assets/ticket/user.svg" />
-                    <p>Mock User</p>
+                    <p>{{ assignedUserName }}</p>
                 </div>
             </div>
             <div *ngIf="!ticket?.date_due" class="ticket-due-date">

@@ -1,5 +1,5 @@
 <div class="user-selection-box">
-    <div *ngFor="let user of users" class="user-item">
+    <div *ngFor="let user of users" class="user-item" (click)="assignUser(user.id)">
         <img src="assets/ticket/user.svg" />
         <p>{{ user.name }}</p>
     </div>

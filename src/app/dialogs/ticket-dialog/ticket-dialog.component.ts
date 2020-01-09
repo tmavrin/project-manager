@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dial
 import { TicketService, Ticket } from 'src/app/services/board/ticket.service';
 import { UserSelectionDialogComponent } from '../user-selection-dialog/user-selection-dialog.component';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { User } from 'src/app/services/user/auth.service';
 
 @Component({
     selector: 'app-ticket-dialog',
@@ -29,6 +30,9 @@ export class TicketDialogComponent {
     ticketForm: FormGroup;
     columnId: string;
 
+    assignedUser: string;
+    assignedUserName = '';
+
     constructor(
         public dialogRef: MatDialogRef<TicketDialogComponent>,
         @Inject(MAT_DIALOG_DATA) public data: any,
@@ -39,6 +43,11 @@ export class TicketDialogComponent {
         this.newTicket = data.newTicket;
         this.ticket = data.ticket;
         this.columnId = data.columnId;
+
+        if (!data.newTicket && this.ticket) {
+            this.selectedColor = this.ticket.color;
+            this.getAssignedUser(this.ticket.assigned_to);
+        }
 
         this.ticketForm = this.formBuilder.group({
             title: ['', Validators.required],
@@ -59,8 +68,10 @@ export class TicketDialogComponent {
             subtitle: this.ticketForm.getRawValue().subtitle,
             description: this.ticketForm.getRawValue().description,
             column_id: this.columnId,
-            date_due: new Date(this.ticketForm.getRawValue().date)
+            date_due: new Date(this.ticketForm.getRawValue().date),
+            assigned_to: this.assignedUser
         };
+        console.log(t);
         this.ticketService.addTicket(t).then(res => {
             this.close(1, res);
         });
@@ -69,12 +80,23 @@ export class TicketDialogComponent {
     assignUser() {
         const dialogRef = this.dialog.open(UserSelectionDialogComponent, {
             data: {
-                newTicket: true
+                boardId: this.data.boardId
             },
             autoFocus: true
         });
 
-        dialogRef.afterClosed().subscribe(result => {});
+        dialogRef.afterClosed().subscribe(result => {
+            this.assignedUser = result;
+            this.getAssignedUser(result);
+        });
+    }
+
+    getAssignedUser(id: string) {
+        this.ticketService.getAssignedUser(id).then((user: User) => {
+            console.log(user);
+            this.assignedUserName = user.name;
+            console.log(this.assignedUserName);
+        });
     }
 
     delete() {

@@ -1,5 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { User } from 'src/app/services/user/auth.service';
+import { BoardService } from 'src/app/services/board/board.service';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { FormBuilder } from '@angular/forms';
+import { TicketService } from 'src/app/services/board/ticket.service';
 
 @Component({
     selector: 'app-user-selection-dialog',
@@ -7,25 +11,16 @@ import { User } from 'src/app/services/user/auth.service';
     styleUrls: ['./user-selection-dialog.component.scss']
 })
 export class UserSelectionDialogComponent implements OnInit {
-    users: User[] = [
-        {
-            uid: 'user_uid1',
-            name: 'username1',
-            email: 'email1'
-        },
-        {
-            uid: 'user_uid2',
-            name: 'username2',
-            email: 'email2'
-        },
-        {
-            uid: 'user_uid3',
-            name: 'username3',
-            email: 'email3'
-        }
-    ];
+    users: User[];
+    constructor(public dialogRef: MatDialogRef<UserSelectionDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private boardService: BoardService) {}
 
-    constructor() {}
+    ngOnInit() {
+        this.boardService.getBoardsUsers(this.data.boardId).then((users: User[]) => {
+            this.users = users;
+        });
+    }
 
-    ngOnInit() {}
+    assignUser(userId: string) {
+        this.dialogRef.close(userId);
+    }
 }

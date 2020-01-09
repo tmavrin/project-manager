@@ -99,6 +99,10 @@ export class BoardService {
                 });
         });
     }
+
+    getBoardsUsers(boardId: string) {
+        return this.http.post(serverConfig.apiAddress + '/board/users?boardId=' + boardId, {}).toPromise();
+    }
 }
 
 export interface Column {

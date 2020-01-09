@@ -27,8 +27,10 @@ export class TicketComponent implements OnInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            if (result.result === -1) {
-                this.deleteTicket.emit(this.ticket);
+            if (result) {
+                if (result.result === -1) {
+                    this.deleteTicket.emit(this.ticket);
+                }
             }
         });
     }
