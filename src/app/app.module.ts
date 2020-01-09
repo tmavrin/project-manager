@@ -20,6 +20,9 @@ import { CreateColumnDialogComponent } from './dialogs/create-column-dialog/crea
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { AddUserDialogComponent } from './dialogs/add-user-dialog/add-user-dialog.component';
+import { HomeModule } from './pages/home/home.module';
+import { LoginModule } from './pages/login/login.module';
+import { RegisterModule } from './pages/register/register.module';
 
 @NgModule({
     declarations: [
@@ -44,7 +47,10 @@ import { AddUserDialogComponent } from './dialogs/add-user-dialog/add-user-dialo
         MatSnackBarModule,
         MatProgressSpinnerModule,
         MatFormFieldModule,
-        MatSelectModule
+        MatSelectModule,
+        HomeModule,
+        LoginModule,
+        RegisterModule
     ],
     providers: [
         {

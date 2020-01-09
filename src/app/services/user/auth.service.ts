@@ -41,13 +41,15 @@ export class AuthService {
                 .toPromise()
                 .then(
                     (data: any) => {
-                        if (data.status === 'failure') {
-                            this.isAuthenticated.next(false);
-                            reject('Invalid login info. No user with credentials found');
-                        } else {
-                            this.userId = data.response.id;
-                            this.isAuthenticated.next(true);
-                            resolve(data.response);
+                        if (data) {
+                            if (data.status === 'failure') {
+                                this.isAuthenticated.next(false);
+                                reject('Invalid login info. No user with credentials found');
+                            } else {
+                                this.userId = data.response.id;
+                                this.isAuthenticated.next(true);
+                                resolve(data.response);
+                            }
                         }
                     },
                     (error: HttpErrorResponse) => {
