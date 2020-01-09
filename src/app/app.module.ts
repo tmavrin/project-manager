@@ -1,4 +1,3 @@
-import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -6,17 +5,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ColumnComponent } from './components/column/column.component';
-import { TicketComponent } from './components/ticket/ticket.component';
-import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
 import { SessionInterceptorService } from './services/user/session-interceptor.service';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TicketDialogComponent } from './dialogs/ticket-dialog/ticket-dialog.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
 import { UserSelectionDialogComponent } from './dialogs/user-selection-dialog/user-selection-dialog.component';
-import { RegisterComponent } from './pages/register/register.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CreateBoardDialogComponent } from './dialogs/create-board-dialog/create-board-dialog.component';
 import { SelectBoardDialogComponent } from './dialogs/select-board-dialog/select-board-dialog.component';
@@ -30,13 +24,8 @@ import { AddUserDialogComponent } from './dialogs/add-user-dialog/add-user-dialo
 @NgModule({
     declarations: [
         AppComponent,
-        LoginComponent,
-        HomeComponent,
-        ColumnComponent,
-        TicketComponent,
         TicketDialogComponent,
         UserSelectionDialogComponent,
-        RegisterComponent,
         CreateBoardDialogComponent,
         SelectBoardDialogComponent,
         CreateColumnDialogComponent,
@@ -49,7 +38,6 @@ import { AddUserDialogComponent } from './dialogs/add-user-dialog/add-user-dialo
         HttpClientModule,
         ReactiveFormsModule,
         FormsModule,
-        DragDropModule,
         MatDialogModule,
         MatDatepickerModule,
         MatNativeDateModule,
