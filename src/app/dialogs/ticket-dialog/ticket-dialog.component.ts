@@ -100,7 +100,6 @@ export class TicketDialogComponent {
         if (id) {
             this.ticketService.getAssignedUser(id).then((user: User) => {
                 this.assignedUserName = user.name;
-                console.log(user);
             });
         }
     }

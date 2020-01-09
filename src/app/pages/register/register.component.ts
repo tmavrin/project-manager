@@ -46,7 +46,7 @@ export class RegisterComponent implements OnInit {
                 }
             );
         } else {
-            console.log('Invalid Register');
+            console.error('Invalid Register');
             const snack = this.snackBar.open('Register Failed');
             setTimeout(() => {
                 snack.dismiss();

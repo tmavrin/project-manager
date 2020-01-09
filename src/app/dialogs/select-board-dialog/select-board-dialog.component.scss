@@ -1,11 +1,15 @@
 .board-selection-box {
     width: 350px;
-
     padding: 20px;
+
+    h2 {
+        font-weight: normal;
+        text-align: center;
+    }
 
     .board-item {
         cursor: pointer;
-        margin: 7px 0;
+        margin: 15px 0;
         padding: 0;
         background: #c4c4c4;
         border-radius: 4px;

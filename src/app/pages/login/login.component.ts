@@ -38,7 +38,7 @@ export class LoginComponent {
                 }
             );
         } else {
-            console.log('invalid login');
+            console.error('invalid login');
         }
     }
 }
