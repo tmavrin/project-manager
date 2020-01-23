@@ -15,8 +15,20 @@ Projekt je baziran na _kanban_ metodi.
 - Dodavanje _task_-ova
 - Dodavanje _tablica_
 - Premjestanje _task_-ova unutar tablice
-- Kategoriziranje _task_-ova
+- Kategoriziranje _task_-ova (boja)
 - Podjela ljudi na specificni _task_
-- Dodavanje github linka na task za specificni _Pull Request_
 - Opcija za _deadline_ na specificni task
-- Dodavanje prioriteta _task_-ovima
+- Dodavanje korisnika na _board_-ove
+
+
+
+
+## Pokretanje koda
+- Node.js (najbolje skinuti LTS verziju) https://nodejs.org/en/ => potrebno za npm i angular.
+
+### Pokrenuti ove naredbe na terminalu u mapi projekta
+#### ako izbacuje error, pokrenuti kao administrator (Win) ili dodati `sudo` (Linux) ispred naredbe
+- `npm install -g @angular/cli`
+- `npm install`
+ 
+- `ng serve` => pokrece web stranicu na https://localhost:4200/
