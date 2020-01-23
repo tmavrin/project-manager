@@ -104,8 +104,12 @@ export class BoardService {
         return this.http.post(serverConfig.apiAddress + '/board/users?boardId=' + boardId, {}).toPromise();
     }
 
-    addUserToBoard(userEmail: string, boardId: string) {
-        return this.http.post(serverConfig.apiAddress + '/board/users/add?email=' + userEmail + '&boardId=' + boardId, {}).toPromise();
+    getNonBoardsUsers(boardId: string) {
+        return this.http.post(serverConfig.apiAddress + '/board/non-users?boardId=' + boardId, {}).toPromise();
+    }
+
+    addUserToBoard(userId: string, boardId: string) {
+        return this.http.post(serverConfig.apiAddress + '/board/users/add?userId=' + userId + '&boardId=' + boardId, {}).toPromise();
     }
 
     removeUser(userId: string, boardId: string) {

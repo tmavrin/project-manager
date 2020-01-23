@@ -92,7 +92,8 @@ export class TicketDialogComponent {
         const dialogRef = this.dialog.open(UserSelectionDialogComponent, {
             data: {
                 boardId: this.data.boardId,
-                editMode: false
+                editMode: false,
+                nonUser: false
             },
             autoFocus: true
         });

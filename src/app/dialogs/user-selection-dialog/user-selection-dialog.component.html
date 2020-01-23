@@ -1,12 +1,17 @@
 <div class="user-selection-box">
-    <h2>Users on this board</h2>
+    <h2 *ngIf="!this.data.nonUser">Users on this board</h2>
+    <h2 *ngIf="this.data.nonUser">Users not on this board</h2>
 
     <div *ngFor="let user of users" class="user-item">
         <div class="user-item-inner" (click)="assignUser(user.id)">
             <img src="assets/ticket/user.svg" />
             <p>{{ user.name }} ({{ user.email }})</p>
         </div>
-        <div *ngIf="this.data.editMode && authService.userId !== user.id && this.data.owner" class="user-delete" (click)="deleteUser(user.id)">
+        <div
+            *ngIf="this.data.editMode && authService.userId !== user.id && this.data.owner"
+            class="user-delete"
+            (click)="deleteUser(user.id)"
+        >
             <img src="assets/home/delete.svg" />
         </div>
         <div *ngIf="this.data.editMode && authService.userId === user.id" class="user-delete">

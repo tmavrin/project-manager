@@ -22,7 +22,11 @@ export class UserSelectionDialogComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        this.getBoardUsers();
+        if (this.data.nonUser) {
+            this.getNonBoardUsers();
+        } else {
+            this.getBoardUsers();
+        }
     }
 
     private getBoardUsers() {
@@ -31,8 +35,18 @@ export class UserSelectionDialogComponent implements OnInit {
         });
     }
 
+    private getNonBoardUsers() {
+        this.boardService.getNonBoardsUsers(this.data.boardId).then((users: User[]) => {
+            this.users = users;
+        });
+    }
+
     assignUser(userId: string) {
-        this.dialogRef.close(userId);
+        if (!this.data.nonUser) {
+            this.dialogRef.close(userId);
+        } else {
+            this.addUser(userId);
+        }
     }
 
     deleteUser(userId: string) {
@@ -41,11 +55,22 @@ export class UserSelectionDialogComponent implements OnInit {
         });
     }
 
-    addUserDialog() {
-        const dialogRef = this.dialog.open(AddUserDialogComponent, {
-            data: {
-                boardId: this.data.boardId
+    addUser(userId: string) {
+        this.boardService.addUserToBoard(userId, this.data.boardId).then((result: any) => {
+            if (result.status === 'success') {
+                this.dialogRef.close();
             }
+        });
+    }
+
+    addUserDialog() {
+        const dialogRef = this.dialog.open(UserSelectionDialogComponent, {
+            data: {
+                boardId: this.data.boardId,
+                editMode: false,
+                nonUser: true
+            },
+            autoFocus: true
         });
 
         dialogRef.afterClosed().subscribe(result => {
