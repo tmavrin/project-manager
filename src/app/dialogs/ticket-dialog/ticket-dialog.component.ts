@@ -4,6 +4,7 @@ import { TicketService, Ticket } from 'src/app/services/board/ticket.service';
 import { UserSelectionDialogComponent } from '../user-selection-dialog/user-selection-dialog.component';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { User } from 'src/app/services/user/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-ticket-dialog',
@@ -38,7 +39,8 @@ export class TicketDialogComponent {
         @Inject(MAT_DIALOG_DATA) public data: any,
         private ticketService: TicketService,
         private dialog: MatDialog,
-        private formBuilder: FormBuilder
+        private formBuilder: FormBuilder,
+        private snackBar: MatSnackBar
     ) {
         this.newTicket = data.newTicket;
         this.ticket = data.ticket;
@@ -51,7 +53,7 @@ export class TicketDialogComponent {
         this.ticketForm = this.formBuilder.group({
             title: ['', Validators.required],
             description: [''],
-            subtitle: [''],
+            subtitle: ['', Validators.required],
             date: ['']
         });
 
@@ -65,18 +67,25 @@ export class TicketDialogComponent {
     }
 
     addTicket() {
-        const t: Ticket = {
-            color: this.selectedColor,
-            title: this.ticketForm.getRawValue().title,
-            subtitle: this.ticketForm.getRawValue().subtitle,
-            description: this.ticketForm.getRawValue().description,
-            column_id: this.columnId,
-            date_due: new Date(this.ticketForm.getRawValue().date),
-            assigned_to: this.assignedUser
-        };
-        this.ticketService.addTicket(t).then(res => {
-            this.close(1, res);
-        });
+        if (this.ticketForm.valid) {
+            const t: Ticket = {
+                color: this.selectedColor,
+                title: this.ticketForm.getRawValue().title,
+                subtitle: this.ticketForm.getRawValue().subtitle,
+                description: this.ticketForm.getRawValue().description,
+                column_id: this.columnId,
+                date_due: new Date(this.ticketForm.getRawValue().date),
+                assigned_to: this.assignedUser
+            };
+            this.ticketService.addTicket(t).then(res => {
+                this.close(1, res);
+            });
+        } else {
+            const snack = this.snackBar.open('Invalid form input. Please fill out at least title and subtitle.');
+            setTimeout(() => {
+                snack.dismiss();
+            }, 3500);
+        }
     }
 
     assignUser() {

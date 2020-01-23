@@ -8,6 +8,7 @@
             id="ticket-title"
             placeholder="Ticket Title"
             value="{{ ticket?.title }}"
+            maxlength="30"
         />
         <input
             formControlName="subtitle"
@@ -17,6 +18,7 @@
             id="ticket-subtitle"
             placeholder="Subtitle or subcategory of the ticket"
             value="{{ ticket?.subtitle }}"
+            maxlength="35"
         />
 
         <div class="description-box">
@@ -27,6 +29,7 @@
                 type="text"
                 id="ticket-desc"
                 value="{{ ticket?.description }}"
+                maxlength="250"
             ></textarea>
         </div>
 
